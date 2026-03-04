@@ -3,101 +3,109 @@ import { Icon } from "astro-icon/components";
 import type { NavItem } from "~/types";
 
 const navItems: Array<NavItem> = [
-  { title: "El problema", url: "#problema" },
   { title: "Cómo funciona", url: "#como-funciona" },
-  { title: "El dashboard", url: "#dashboard" },
   { title: "Para quién", url: "#para-quien" },
+  { title: "Contacto", url: "#cta" },
 ];
 ---
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-6 py-4 lg:px-12"
+  class="fixed top-0 z-50 w-full border-b border-transparent px-5 py-3 transition-all duration-300 sm:px-8 lg:px-12"
 >
-  <!-- Logo -->
-  <a href="#" class="flex items-center gap-2 no-underline hover:!text-white">
-    <div class="logo-mark flex h-8 w-8 items-center justify-center rounded-md border border-white/20 bg-white/5">
-      <span class="text-xs font-bold tracking-widest text-white">NB</span>
-    </div>
-    <span class="hidden text-sm font-semibold tracking-tight text-white sm:block">
-      Naz<span class="text-offset">Bot</span>
-    </span>
-  </a>
+  <div class="mx-auto flex max-w-6xl items-center justify-between">
 
-  <!-- Desktop Nav -->
-  <div class="flex items-center gap-6">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2 no-underline">
+      <div class="flex h-8 w-8 items-center justify-center rounded-md border border-white/20 bg-white/5">
+        <span class="text-xs font-bold tracking-widest text-white">NB</span>
+      </div>
+      <span class="text-sm font-semibold tracking-tight text-white">
+        Naz<span class="text-offset">Bot</span>
+      </span>
+    </a>
+
+    <!-- Desktop Nav -->
     <nav class="hidden md:block">
       <ul class="flex items-center gap-7">
-        {
-          navItems.map(({ title, url }) => (
-            <li>
-              <a
-                class="text-sm font-medium text-offset no-underline transition-colors duration-200 hover:text-white"
-                href={url}
-              >
-                {title}
-              </a>
-            </li>
-          ))
-        }
+        {navItems.map(({ title, url }) => (
+          <li>
+            <a
+              class="text-sm font-medium text-offset no-underline transition-colors hover:text-white"
+              href={url}
+            >
+              {title}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
 
+    <!-- Desktop CTA -->
     <a href="#cta" class="btn-primary hidden text-sm md:inline-flex">
       Quiero mi agente
     </a>
 
-    <!-- Mobile menu button -->
+    <!-- Mobile hamburger -->
     <button
       id="open-nav-button"
       type="button"
-      class="btn md:hidden"
+      class="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-white/5 md:hidden"
       aria-label="Abrir menú"
     >
-      <Icon name="mdi:menu" class="size-6 text-white" />
+      <Icon name="mdi:menu" class="size-5 text-white" />
     </button>
   </div>
-
-  <!-- Mobile modal -->
-  <div id="menu-modal" class="modal hidden" aria-hidden="true">
-    <div class="fixed inset-0 bg-default px-6 py-4">
-      <div class="space-y-8" role="dialog" aria-modal="true">
-        <header class="flex items-center justify-between">
-          <span class="text-sm font-semibold text-white">NazBot</span>
-          <button
-            id="close-nav-button"
-            type="button"
-            class="btn"
-            aria-label="Cerrar menú"
-          >
-            <Icon name="mdi:close" class="size-6 text-white" />
-          </button>
-        </header>
-        <nav>
-          <ul class="flex flex-col gap-1">
-            {
-              navItems.map(({ title, url }) => (
-                <li>
-                  <a
-                    class="block rounded-lg px-4 py-3 text-lg font-medium text-default no-underline transition-colors hover:bg-white/5"
-                    href={url}
-                  >
-                    {title}
-                  </a>
-                </li>
-              ))
-            }
-            <li class="pt-4">
-              <a href="#cta" class="btn-primary w-full justify-center">
-                Quiero mi agente
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </div>
 </header>
+
+<!-- Mobile menu overlay -->
+<div id="menu-modal" class="modal hidden" aria-hidden="true">
+  <div class="fixed inset-0 z-[60] flex flex-col bg-[#0b0b0b]">
+
+    <!-- Modal header -->
+    <div class="flex items-center justify-between border-b border-white/[0.07] px-5 py-4">
+      <div class="flex items-center gap-2">
+        <div class="flex h-7 w-7 items-center justify-center rounded-md border border-white/20 bg-white/5">
+          <span class="text-xs font-bold tracking-widest text-white">NB</span>
+        </div>
+        <span class="text-sm font-semibold text-white">NazBot</span>
+      </div>
+      <button
+        id="close-nav-button"
+        type="button"
+        class="flex h-9 w-9 items-center justify-center rounded-md border border-white/10 bg-white/5"
+        aria-label="Cerrar menú"
+      >
+        <Icon name="mdi:close" class="size-5 text-white" />
+      </button>
+    </div>
+
+    <!-- Nav links -->
+    <nav class="flex-1 overflow-y-auto px-5 py-6" role="dialog" aria-modal="true">
+      <ul class="flex flex-col gap-1">
+        {navItems.map(({ title, url }) => (
+          <li>
+            <a
+              class="flex items-center rounded-lg px-4 py-4 text-base font-medium text-white/80 no-underline transition-colors hover:bg-white/5 hover:text-white"
+              href={url}
+            >
+              {title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <!-- Bottom CTA -->
+    <div class="border-t border-white/[0.07] px-5 py-5">
+      <a href="#cta" class="btn-primary w-full justify-center text-base">
+        Quiero mi agente
+      </a>
+      <p class="mt-3 text-center text-xs text-offset/50">Gratis · 30 minutos · Sin compromisos</p>
+    </div>
+
+  </div>
+</div>
 
 <script>
   import MicroModal from "micromodal";
@@ -106,7 +114,7 @@ const navItems: Array<NavItem> = [
   const menuModalId = "menu-modal";
   const header = document.querySelector("#page-header") as HTMLElement;
   const page = document.documentElement;
-  const menu = document.querySelector(`#${menuModalId} ul`);
+  const menu = document.querySelector(`#${menuModalId} nav`);
   const openNavButton = document.querySelector("#open-nav-button");
   const closeNavButton = document.querySelector("#close-nav-button");
 
@@ -122,8 +130,8 @@ const navItems: Array<NavItem> = [
   closeNavButton.addEventListener("click", closeMenu);
 
   document.addEventListener("scroll", () => {
-    const d = page.clientHeight - page.scrollTop - header.offsetHeight;
-    header.classList.toggle("fixed-header", d < 0);
+    const scrolled = page.scrollTop > 20;
+    header.classList.toggle("scrolled-header", scrolled);
   });
 
   menu.addEventListener("click", (event) => {
@@ -135,22 +143,19 @@ const navItems: Array<NavItem> = [
 
 <noscript>
   <style>
-    #open-nav-button {
-      display: none;
-    }
+    #open-nav-button { display: none; }
   </style>
 </noscript>
 
 <style>
-  .fixed-header {
-    @apply fixed bottom-auto top-0;
-    background: rgba(11, 11, 11, 0.92);
+  .scrolled-header {
+    background: rgba(11, 11, 11, 0.95);
     backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    border-bottom-color: rgba(255, 255, 255, 0.07);
   }
 
   .modal.is-open {
-    @apply block;
+    display: block;
   }
 
   a {
