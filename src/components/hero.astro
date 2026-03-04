@@ -18,7 +18,7 @@ import Starfield from "~/components/starfield.astro";
   >
   </div>
 
-  <div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-32 lg:px-12">
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-6 py-20 lg:py-32 lg:px-12">
     <div class="grid items-center gap-16 lg:grid-cols-2">
       <!-- Left: Copy -->
       <div class="flex flex-col gap-8">
@@ -27,19 +27,19 @@ import Starfield from "~/components/starfield.astro";
         </div>
 
         <h1
-          class="text-4xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl"
+          class="text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl"
         >
           Encuentra clientes y
           <span class="gradient-text"> contacta por ti solo</span>
         </h1>
 
-        <p class="max-w-lg text-lg leading-relaxed text-offset">
+        <p class="max-w-lg text-base leading-relaxed text-offset sm:text-lg">
           NazBot pone un agente a trabajar para ti: busca clientes, los ordena
           por interés y escribe el primer mensaje. Tú solo decides a quién cerrar.
         </p>
 
-        <div class="flex flex-wrap gap-4">
-          <a href="#cta" class="btn-primary">
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a href="#cta" class="btn-primary justify-center">
             Quiero mi agente
           </a>
           <a href="#como-funciona" class="btn-secondary">
