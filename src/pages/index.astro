@@ -1,74 +1,79 @@
 ---
 import "@fontsource-variable/inter";
-import Compatibility from "~/components/compatibility.astro";
-import Features from "~/components/features.astro";
-import Footer from "~/components/footer.astro";
 import Header from "~/components/header.astro";
-import Intro from "~/components/intro.astro";
-import Showcase from "~/components/showcase.astro";
-import Splash from "~/components/splash.astro";
+import Hero from "~/components/hero.astro";
+import Problema from "~/components/problema.astro";
+import Solucion from "~/components/solucion.astro";
+import ComoFunciona from "~/components/como-funciona.astro";
+import DashboardMockup from "~/components/dashboard-mockup.astro";
+import Beneficios from "~/components/beneficios.astro";
+import ParaQuien from "~/components/para-quien.astro";
+import CtaSection from "~/components/cta-section.astro";
+import Footer from "~/components/footer.astro";
 import "~/styles/index.css";
 
-const { generator, site } = Astro;
-const image = new URL("social.jpg", site);
+const title = "Agente de Gestión de Oportunidades | Controla tu pipeline B2B";
 const description =
-  "Build fast websites, faster. Astro is a new kind of site builder for the modern web. Lightning-fast performance meets powerful developer experience.";
+  "Implemento un sistema con agente y dashboard que te permite detectar, priorizar y gestionar potenciales clientes con más criterio y menos carga manual.";
+const siteUrl = "https://agentegestion.com";
 ---
 
 <!doctype html>
-<html lang="en" class="h-full motion-safe:scroll-smooth" data-theme="dark">
+<html lang="es" class="h-full motion-safe:scroll-smooth" data-theme="dark">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <meta name="generator" content={generator} />
+    <meta name="generator" content={Astro.generator} />
 
-    <title>Astro Landing Page</title>
+    <title>{title}</title>
     <meta name="description" content={description} />
 
-    <!-- social media -->
-    <meta property="og:title" content="Astro" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Agente de Gestión de Oportunidades" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={image} />
-    <meta property="og:url" content={site} />
+    <meta property="og:url" content={siteUrl} />
     <meta name="twitter:card" content="summary_large_image" />
 
-    <!-- initialize theme -->
-    <script is:inline>
-      const themeSaved = localStorage.getItem("theme");
-
-      if (themeSaved) {
-        document.documentElement.dataset.theme = themeSaved;
-      } else {
-        const prefersDark = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-        document.documentElement.dataset.theme = prefersDark ? "dark" : "light";
-      }
-
-      window
-        .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (event) => {
-          if (!localStorage.getItem("theme")) {
-            document.documentElement.dataset.theme = event.matches
-              ? "dark"
-              : "light";
-          }
-        });
-    </script>
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
-  <body
-    class="h-full overflow-x-hidden bg-default text-default text-base selection:bg-secondary selection:text-white"
-  >
+
+  <body class="h-full overflow-x-hidden bg-default text-default">
     <Header />
-    <Splash />
-    <div class="space-y-24 px-8 py-32">
-      <Intro />
-      <Features />
-      <Compatibility />
-      <Showcase />
-    </div>
+    <main>
+      <Hero />
+      <Problema />
+      <Solucion />
+      <ComoFunciona />
+      <DashboardMockup />
+      <Beneficios />
+      <ParaQuien />
+      <CtaSection />
+    </main>
     <Footer />
+
+    <!-- Scroll Reveal -->
+    <script>
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.12,
+          rootMargin: "0px 0px -40px 0px",
+        },
+      );
+
+      revealElements.forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>

@@ -1,12 +1,185 @@
-/* TODO: consider creating <Button> and <GradientText> components */
+/* =============================================
+   BOTONES
+   ============================================= */
+
 a,
 .btn {
   @apply transition-colors duration-200;
-  @apply hover:text-secondary;
-  @apply focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 focus:ring-offset-transparent;
+  @apply focus:outline-none focus:ring-2 focus:ring-white/20 focus:ring-offset-2 focus:ring-offset-transparent;
 }
 
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  background: #ffffff;
+  color: #0b0b0b;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
+  color: #0b0b0b;
+}
+
+.btn-primary:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.75rem;
+  background: transparent;
+  color: #f0f0f0;
+  font-weight: 500;
+  font-size: 0.875rem;
+  letter-spacing: 0.025em;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+/* =============================================
+   SCROLL REVEAL
+   ============================================= */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
+.delay-300 { transition-delay: 0.3s; }
+.delay-400 { transition-delay: 0.4s; }
+.delay-500 { transition-delay: 0.5s; }
+
+/* =============================================
+   CARDS
+   ============================================= */
+
+.card {
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition:
+    border-color 0.25s ease,
+    background 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.13);
+  background: #161616;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* =============================================
+   GRADIENT TEXT
+   ============================================= */
+
 .gradient-text {
-  @apply bg-clip-text text-transparent;
-  @apply bg-gradient-to-br from-indigo-500 via-fuchsia-500 to-pink-500;
+  background: linear-gradient(135deg, #ffffff 30%, #8f8f8f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* =============================================
+   SECTION TAG (etiqueta pequeña encima del h2)
+   ============================================= */
+
+.section-tag {
+  display: inline-block;
+  padding: 0.25rem 0.875rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8f8f8f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+}
+
+/* =============================================
+   GRID PATTERN (fondo sutil)
+   ============================================= */
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* =============================================
+   FORM INPUTS
+   ============================================= */
+
+.form-input {
+  width: 100%;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: #f0f0f0;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: #555;
+}
+
+.form-input:focus {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+
+.form-input option {
+  background: #111111;
+  color: #f0f0f0;
 }

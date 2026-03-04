@@ -1,0 +1,102 @@
+---
+import { Icon } from "astro-icon/components";
+
+const perfiles = [
+  {
+    icon: "mdi:account-outline",
+    tipo: "Autónomos",
+    desc: "Que trabajan solos y no tienen tiempo para buscar clientes a mano. El agente hace eso por ellos.",
+  },
+  {
+    icon: "mdi:domain",
+    tipo: "Agencias",
+    desc: "Que llevan varios clientes a la vez y necesitan saber en todo momento qué oportunidades están vivas.",
+  },
+  {
+    icon: "mdi:briefcase-outline",
+    tipo: "Consultores",
+    desc: "Que venden servicios caros y quieren llegar a los clientes correctos sin perder horas prospectando.",
+  },
+  {
+    icon: "mdi:office-building-outline",
+    tipo: "Empresas que venden a otras empresas",
+    desc: "Que quieren crecer y llegar a más clientes sin contratar más comerciales ni complicar el proceso.",
+  },
+];
+---
+
+<section id="para-quien" class="section-py relative bg-[#0d0d0d]">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <!-- Header -->
+    <div class="mb-16 text-center reveal">
+      <span class="section-tag">Para quién es</span>
+      <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        ¿Es para
+        <span class="gradient-text"> ti?</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
+        Si buscas clientes de forma manual y pierdes tiempo en gestión,
+        NazBot está hecho para ti.
+      </p>
+    </div>
+
+    <!-- Perfiles -->
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        perfiles.map((p, i) => (
+          <div class={`perfil-card reveal delay-${(i + 1) * 100}`}>
+            <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl border border-white/8 bg-white/4">
+              <Icon name={p.icon} class="h-6 w-6 text-white/60" />
+            </div>
+            <h3 class="mb-2 text-lg font-bold text-white">{p.tipo}</h3>
+            <p class="text-sm leading-relaxed text-offset">{p.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- CTA secundario inline -->
+    <div class="mt-14 reveal text-center">
+      <p class="mb-6 text-offset">
+        ¿No sabes si es para ti? Escríbeme y te respondo en menos de 24 horas.
+      </p>
+      <a href="#cta" class="btn-secondary inline-flex">
+        Cuéntame tu caso
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-py {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .perfil-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 1.75rem 1.5rem;
+    transition:
+      border-color 0.25s ease,
+      background 0.25s ease,
+      transform 0.25s ease;
+  }
+
+  .perfil-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    transform: translateY(-2px);
+  }
+
+  .bg-white\/4 {
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .border-white\/8 {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+</style>

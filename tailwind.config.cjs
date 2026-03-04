@@ -10,6 +10,8 @@ module.exports = {
       colors: {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
+        surface: "#111111",
+        "surface-2": "#161616",
       },
       textColor: {
         default: "var(--color-text)",

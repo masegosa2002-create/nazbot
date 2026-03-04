@@ -1,0 +1,100 @@
+---
+import { Icon } from "astro-icon/components";
+
+const componentes = [
+  {
+    icon: "mdi:robot-outline",
+    num: "01",
+    title: "Agente",
+    subtitle: "Detecta y analiza",
+    desc: "El agente sale a buscar clientes por ti. Analiza si encajan con lo que vendes y los trae ya listos. Sin que toques nada.",
+  },
+  {
+    icon: "mdi:view-dashboard-outline",
+    num: "02",
+    title: "Dashboard",
+    subtitle: "Visibilidad total",
+    desc: "Una pantalla donde ves todo: quién es cada cliente, en qué punto está y qué vale la pena. Sin abrir correos, sin hojas de cálculo.",
+  },
+  {
+    icon: "mdi:filter-variant",
+    num: "03",
+    title: "Priorización",
+    subtitle: "Enfoca tu energía",
+    desc: "El sistema te dice a quién tienes que escribir hoy y por qué. No tienes que adivinar. Tú solo actúas cuando te lo indica.",
+  },
+];
+---
+
+<section id="solucion" class="section-py relative bg-[#0d0d0d]">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <!-- Header -->
+    <div class="mb-16 text-center reveal">
+      <span class="section-tag">Cómo funciona</span>
+      <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        Tres piezas que
+        <span class="gradient-text"> trabajan juntas</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
+        Un agente que busca, una pantalla donde lo ves todo y una guía que te dice
+        cuándo actuar. Simple. Sin pasos extra.
+      </p>
+    </div>
+
+    <!-- Componentes grid con conectores -->
+    <div class="relative grid gap-6 lg:grid-cols-3">
+      <!-- Línea conectora (desktop only) -->
+      <div class="connector-line pointer-events-none absolute left-1/3 right-1/3 top-16 hidden h-px bg-gradient-to-r from-white/5 via-white/15 to-white/5 lg:block"></div>
+      <div class="connector-line pointer-events-none absolute left-2/3 right-0 top-16 hidden h-px bg-gradient-to-r from-white/5 via-white/15 to-white/5 lg:block"></div>
+
+      {
+        componentes.map((c, i) => (
+          <div class={`card reveal delay-${(i + 1) * 100} relative flex flex-col gap-5 lg:pt-8`}>
+            <!-- Número decorativo -->
+            <div class="absolute right-5 top-4 text-4xl font-extrabold text-white/4 select-none">
+              {c.num}
+            </div>
+
+            <!-- Icono -->
+            <div class="flex h-12 w-12 items-center justify-center rounded-xl border border-white/8 bg-white/4">
+              <Icon name={c.icon} class="h-6 w-6 text-white/70" />
+            </div>
+
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest text-offset">
+                {c.subtitle}
+              </p>
+              <h3 class="mt-1 text-xl font-bold text-white">{c.title}</h3>
+            </div>
+
+            <p class="text-sm leading-relaxed text-offset">{c.desc}</p>
+
+            {/* Arrow (entre cards, en desktop) */}
+            {i < componentes.length - 1 && (
+              <div class="absolute -right-4 top-1/2 hidden -translate-y-1/2 lg:block">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-py {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+  .bg-white\/4 {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .border-white\/8 {
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+</style>

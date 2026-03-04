@@ -1,79 +1,99 @@
 ---
 import { Icon } from "astro-icon/components";
-import ThemeSwitcher from "~/components/theme-switcher.astro";
 import type { NavItem } from "~/types";
 
 const navItems: Array<NavItem> = [
-  { title: "Features", url: "#features" },
-  { title: "Compatibility", url: "#compatibility" },
-  { title: "Showcase", url: "#showcase" },
+  { title: "El problema", url: "#problema" },
+  { title: "Cómo funciona", url: "#como-funciona" },
+  { title: "El dashboard", url: "#dashboard" },
+  { title: "Para quién", url: "#para-quien" },
 ];
 ---
 
 <header
   id="page-header"
-  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-8 py-4 text-white"
+  class="absolute bottom-0 z-20 flex w-full items-center justify-between border-b border-transparent px-6 py-4 lg:px-12"
 >
-  <a class="flex items-center gap-3 hover:!text-default" href="#">
-    <h1 class="sr-only">Astro</h1>
-    <Icon name="logomark" class="size-10" />
-    <Icon name="wordmark" class="hidden h-4 sm:block" />
-  </a>
-  <div>
-    <div class="flex items-center gap-6">
-      <nav class="hidden sm:block">
-        <ul class="flex items-center gap-6">
-          {
-            navItems.map(({ title, url }) => (
-              <li>
-                <a class="text-sm" href={url}>
-                  {title}
-                </a>
-              </li>
-            ))
-          }
-        </ul>
-      </nav>
-      <button
-        id="open-nav-button"
-        type="button"
-        class="btn sm:hidden"
-        aria-label="Navigation"
-      >
-        <Icon name="mdi:menu" class="size-8" />
-      </button>
-      <ThemeSwitcher />
+  <!-- Logo -->
+  <a href="#" class="flex items-center gap-2 no-underline hover:!text-white">
+    <div class="logo-mark flex h-8 w-8 items-center justify-center rounded-md border border-white/20 bg-white/5">
+      <span class="text-xs font-bold tracking-widest text-white">AG</span>
     </div>
-    <div id="menu-modal" class="modal hidden" aria-hidden="true">
-      <div class="fixed inset-0 bg-default px-8 py-4 text-default">
-        <div class="space-y-4" role="dialog" aria-modal="true">
-          <header class="text-right">
-            <button
-              id="close-nav-button"
-              type="button"
-              class="btn"
-              aria-label="Close navigation"
-            >
-              <Icon name="mdi:close" class="size-8" />
-            </button>
-          </header>
-          <div class="flex justify-center">
-            <Icon name="logomark" class="size-16" />
-          </div>
-          <nav>
-            <ul class="flex flex-col">
-              {
-                navItems.map(({ title, url }) => (
-                  <li>
-                    <a class="block py-4 text-center text-xl" href={url}>
-                      {title}
-                    </a>
-                  </li>
-                ))
-              }
-            </ul>
-          </nav>
-        </div>
+    <span class="hidden text-sm font-semibold tracking-tight text-white sm:block">
+      Agente<span class="text-offset">Gestión</span>
+    </span>
+  </a>
+
+  <!-- Desktop Nav -->
+  <div class="flex items-center gap-6">
+    <nav class="hidden md:block">
+      <ul class="flex items-center gap-7">
+        {
+          navItems.map(({ title, url }) => (
+            <li>
+              <a
+                class="text-sm font-medium text-offset no-underline transition-colors duration-200 hover:text-white"
+                href={url}
+              >
+                {title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a href="#cta" class="btn-primary hidden text-sm md:inline-flex">
+      Solicitar diagnóstico
+    </a>
+
+    <!-- Mobile menu button -->
+    <button
+      id="open-nav-button"
+      type="button"
+      class="btn md:hidden"
+      aria-label="Abrir menú"
+    >
+      <Icon name="mdi:menu" class="size-6 text-white" />
+    </button>
+  </div>
+
+  <!-- Mobile modal -->
+  <div id="menu-modal" class="modal hidden" aria-hidden="true">
+    <div class="fixed inset-0 bg-default px-6 py-4">
+      <div class="space-y-8" role="dialog" aria-modal="true">
+        <header class="flex items-center justify-between">
+          <span class="text-sm font-semibold text-white">AgenteGestión</span>
+          <button
+            id="close-nav-button"
+            type="button"
+            class="btn"
+            aria-label="Cerrar menú"
+          >
+            <Icon name="mdi:close" class="size-6 text-white" />
+          </button>
+        </header>
+        <nav>
+          <ul class="flex flex-col gap-1">
+            {
+              navItems.map(({ title, url }) => (
+                <li>
+                  <a
+                    class="block rounded-lg px-4 py-3 text-lg font-medium text-default no-underline transition-colors hover:bg-white/5"
+                    href={url}
+                  >
+                    {title}
+                  </a>
+                </li>
+              ))
+            }
+            <li class="pt-4">
+              <a href="#cta" class="btn-primary w-full justify-center">
+                Solicitar diagnóstico
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
@@ -84,7 +104,6 @@ const navItems: Array<NavItem> = [
   import invariant from "tiny-invariant";
 
   const menuModalId = "menu-modal";
-
   const header = document.querySelector("#page-header") as HTMLElement;
   const page = document.documentElement;
   const menu = document.querySelector(`#${menuModalId} ul`);
@@ -96,13 +115,8 @@ const navItems: Array<NavItem> = [
   invariant(openNavButton, "openNavButton should not be null");
   invariant(closeNavButton, "closeNavButton should not be null");
 
-  const openMenu = () => {
-    MicroModal.show(menuModalId, { disableScroll: true });
-  };
-
-  const closeMenu = () => {
-    MicroModal.close(menuModalId);
-  };
+  const openMenu = () => MicroModal.show(menuModalId, { disableScroll: true });
+  const closeMenu = () => MicroModal.close(menuModalId);
 
   openNavButton.addEventListener("click", openMenu);
   closeNavButton.addEventListener("click", closeMenu);
@@ -130,9 +144,16 @@ const navItems: Array<NavItem> = [
 <style>
   .fixed-header {
     @apply fixed bottom-auto top-0;
-    @apply border-default bg-default text-default;
+    background: rgba(11, 11, 11, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   }
+
   .modal.is-open {
     @apply block;
+  }
+
+  a {
+    text-decoration: none;
   }
 </style>

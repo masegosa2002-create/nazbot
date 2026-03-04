@@ -1,0 +1,106 @@
+---
+const pasos = [
+  {
+    num: "01",
+    title: "Le dices qué cliente quieres",
+    desc: "En una llamada corta me cuentas a quién le vendes: sector, tamaño, zona. Con eso configuro tu agente.",
+  },
+  {
+    num: "02",
+    title: "El agente busca y contacta",
+    desc: "El agente sale a buscar esos clientes por internet, los analiza y les escribe un mensaje personalizado. Solo. Sin que hagas nada.",
+  },
+  {
+    num: "03",
+    title: "Lo ves todo en pantalla",
+    desc: "Tienes una pantalla donde aparecen los clientes contactados, cuáles respondieron y cuáles están esperando. Todo en un sitio.",
+  },
+  {
+    num: "04",
+    title: "Tú solo cierras la venta",
+    desc: "Cuando alguien muestra interés, el sistema te avisa. Entras, ves el contexto y actúas. Sin buscar nada, sin recordar nada.",
+  },
+];
+---
+
+<section id="como-funciona" class="section-py relative bg-[#0b0b0b]">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <!-- Header -->
+    <div class="mb-16 text-center reveal">
+      <span class="section-tag">Paso a paso</span>
+      <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        Así de simple
+        <span class="gradient-text"> es el proceso</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
+        Lo pones en marcha una vez. A partir de ahí, el agente trabaja solo
+        y tú ves los resultados.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      {
+        pasos.map((paso, i) => (
+          <div class={`step-card reveal delay-${(i + 1) * 100} relative`}>
+            <!-- Connector line (desktop) -->
+            {i < pasos.length - 1 && (
+              <div class="step-connector hidden lg:block" />
+            )}
+
+            <!-- Number badge -->
+            <div class="mb-5">
+              <span class="step-num">{paso.num}</span>
+            </div>
+
+            <h3 class="mb-3 text-base font-semibold text-white">
+              {paso.title}
+            </h3>
+            <p class="text-sm leading-relaxed text-offset">{paso.desc}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-py {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .step-card {
+    padding: 1.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.015);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+
+  .step-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  .step-num {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: rgba(255, 255, 255, 0.12);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .step-connector {
+    position: absolute;
+    right: -1.25rem;
+    top: 2.75rem;
+    width: 1.25rem;
+    height: 1px;
+    background: linear-gradient(to right, rgba(255,255,255,0.1), rgba(255,255,255,0.03));
+    z-index: 1;
+  }
+</style>

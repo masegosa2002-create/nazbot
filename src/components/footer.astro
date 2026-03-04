@@ -1,49 +1,77 @@
 ---
-import { Icon } from "astro-icon/components";
-import HeroImage from "~/components/hero-image.astro";
-import type { FooterLink } from "~/types";
-
-const links: Array<FooterLink> = [
-  {
-    url: "https://astro.build/",
-    description: "Astro's official website",
-    icon: "mdi:home",
-  },
-  {
-    url: "https://github.com/mhyfritz/astro-landing-page",
-    description: "View source on GitHub",
-    icon: "fa-brands:github-alt",
-  },
-  {
-    url: "https://astro.build/chat",
-    description: "Astro on Discord",
-    icon: "fa-brands:discord",
-  },
-  {
-    url: "https://twitter.com/astrodotbuild",
-    description: "Astro on Twitter",
-    icon: "fa-brands:twitter",
-  },
-];
 ---
 
-<footer class="relative flex h-64 items-center justify-center">
-  <div class="absolute inset-0 overflow-hidden opacity-40">
-    <HeroImage />
+<footer class="relative border-t border-white/[0.06] bg-[#0b0b0b] pt-12 pb-8">
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+
+    <!-- Top row: brand + nav -->
+    <div class="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
+      <!-- Brand -->
+      <div class="flex items-center gap-2">
+        <div class="flex h-7 w-7 items-center justify-center rounded-md border border-white/15 bg-white/5">
+          <span class="text-xs font-bold tracking-widest text-white">NB</span>
+        </div>
+        <span class="text-sm font-semibold text-white/70">NazBot</span>
+      </div>
+
+      <!-- Nav links -->
+      <nav>
+        <ul class="flex flex-wrap items-center gap-x-6 gap-y-2">
+          <li>
+            <a href="#problema" class="text-xs text-offset hover:text-white transition-colors">
+              El problema
+            </a>
+          </li>
+          <li>
+            <a href="#como-funciona" class="text-xs text-offset hover:text-white transition-colors">
+              Cómo funciona
+            </a>
+          </li>
+          <li>
+            <a href="#cta" class="text-xs text-offset hover:text-white transition-colors">
+              Contacto
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- Divider -->
+    <div class="my-6 h-px bg-white/[0.06]"></div>
+
+    <!-- Bottom row: legal links + copyright -->
+    <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
+      <!-- Legal links -->
+      <nav>
+        <ul class="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <li>
+            <a href="/aviso-legal" class="text-xs text-offset/60 hover:text-white/70 transition-colors">
+              Aviso Legal
+            </a>
+          </li>
+          <li>
+            <a href="/privacidad" class="text-xs text-offset/60 hover:text-white/70 transition-colors">
+              Política de Privacidad
+            </a>
+          </li>
+          <li>
+            <a href="/cookies" class="text-xs text-offset/60 hover:text-white/70 transition-colors">
+              Política de Cookies
+            </a>
+          </li>
+          <li>
+            <a href="/terminos" class="text-xs text-offset/60 hover:text-white/70 transition-colors">
+              Términos y Condiciones
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Copyright -->
+      <p class="text-xs text-offset/40">
+        © {new Date().getFullYear()} NazBot. Todos los derechos reservados.
+      </p>
+    </div>
+
   </div>
-  <ul class="relative grid grid-cols-2 gap-4 sm:grid-cols-4">
-    {
-      links.map((link) => (
-        <li>
-          <a
-            class="flex size-16 items-center justify-center rounded-full border-2 border-current p-4"
-            href={link.url}
-          >
-            <span class="sr-only">{link.description}</span>
-            <Icon class="size-full" name={link.icon} />
-          </a>
-        </li>
-      ))
-    }
-  </ul>
 </footer>

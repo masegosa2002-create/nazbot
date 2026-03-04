@@ -1,0 +1,281 @@
+---
+const leads = [
+  { name: "Ana García", empresa: "Agencia Norte", score: 92, estado: "Caliente", pct: "92%" },
+  { name: "Luis Pérez", empresa: "Consultores XP", score: 78, estado: "Tibio", pct: "78%" },
+  { name: "Marta Ruiz", empresa: "B2B SaaS Co.", score: 61, estado: "Seguimiento", pct: "61%" },
+  { name: "Javier López", empresa: "Tech Startup", score: 45, estado: "Frío", pct: "45%" },
+];
+---
+
+<section id="dashboard" class="section-py relative overflow-hidden bg-[#0d0d0d]">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+  <!-- Ambient glow behind mockup -->
+  <div
+    class="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20"
+    style="background: radial-gradient(ellipse, rgba(255,255,255,0.07) 0%, transparent 70%);"
+  ></div>
+
+  <div class="relative mx-auto max-w-5xl px-6 lg:px-12">
+    <!-- Header -->
+    <div class="mb-14 text-center reveal">
+      <span class="section-tag">El dashboard</span>
+      <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        Visibilidad total en
+        <span class="gradient-text"> un solo lugar</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
+        Sin hojas de cálculo. Sin tabs infinitos. Un panel con todo lo que
+        necesitas para tomar decisiones con criterio.
+      </p>
+    </div>
+
+    <!-- Dashboard mockup -->
+    <div class="reveal dashboard-frame mx-auto">
+      <!-- Title bar -->
+      <div class="dashboard-titlebar">
+        <div class="flex items-center gap-1.5">
+          <span class="h-2.5 w-2.5 rounded-full bg-white/10"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/10"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-white/10"></span>
+        </div>
+        <div class="flex-1 text-center text-xs font-medium text-white/40">
+          Pipeline de Oportunidades
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="rounded-full bg-white/5 px-2.5 py-0.5 text-xs text-white/30">
+            Esta semana
+          </span>
+          <span class="live-dot"></span>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="grid grid-cols-3 gap-3 border-b border-white/5 p-4">
+        {
+          [
+            { label: "Leads activos", value: "12" },
+            { label: "Calientes", value: "4" },
+            { label: "Acciones pendientes", value: "3" },
+          ].map((s) => (
+            <div class="stat-card">
+              <p class="text-xl font-bold text-white sm:text-2xl">{s.value}</p>
+              <p class="mt-0.5 text-xs text-white/40">{s.label}</p>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Leads table -->
+      <div class="overflow-x-auto">
+        <table class="w-full">
+          <thead>
+            <tr class="border-b border-white/5">
+              <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white/30">Nombre</th>
+              <th class="hidden px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white/30 sm:table-cell">Empresa</th>
+              <th class="px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white/30">Score</th>
+              <th class="hidden px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-white/30 md:table-cell">Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              leads.map((lead, i) => (
+                <tr class={`lead-row border-b border-white/5 ${i === 0 ? "lead-hot" : ""}`}>
+                  <td class="px-4 py-3">
+                    <div class="flex items-center gap-2.5">
+                      <div class="lead-avatar">
+                        {lead.name.charAt(0)}
+                      </div>
+                      <span class="text-sm font-medium text-white/80">{lead.name}</span>
+                    </div>
+                  </td>
+                  <td class="hidden px-4 py-3 sm:table-cell">
+                    <span class="text-sm text-white/40">{lead.empresa}</span>
+                  </td>
+                  <td class="px-4 py-3">
+                    <div class="flex items-center gap-2">
+                      <div class="h-1.5 w-16 rounded-full bg-white/8">
+                        <div
+                          class="h-1.5 rounded-full score-bar"
+                          style={`width: ${lead.pct}`}
+                          data-score={lead.score}
+                        />
+                      </div>
+                      <span class="text-sm font-semibold text-white/70">{lead.score}</span>
+                    </div>
+                  </td>
+                  <td class="hidden px-4 py-3 md:table-cell">
+                    <span class={`estado-badge estado-${lead.estado.toLowerCase().replace(" ", "-")}`}>
+                      {lead.estado}
+                    </span>
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Sugerencia acción -->
+      <div class="accion-box m-4 mt-2 flex items-start gap-3">
+        <div class="accion-icon mt-0.5 flex-shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </div>
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-white/50">Próxima acción sugerida</p>
+          <p class="mt-1 text-sm text-white/80">
+            Envía propuesta a <strong class="text-white">Ana García</strong> — lleva 5 días sin contacto y su score bajará si no actúas hoy.
+            <a href="#cta" class="ml-1 inline-flex items-center gap-1 text-white/60 underline-offset-2 hover:text-white">
+              Actuar ahora
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-py {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .dashboard-frame {
+    background: #0f0f0f;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.04),
+      0 40px 80px rgba(0, 0, 0, 0.6),
+      0 0 60px rgba(255, 255, 255, 0.03);
+  }
+
+  .dashboard-titlebar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .live-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+  }
+
+  .stat-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+  }
+
+  .lead-row {
+    transition: background 0.15s ease;
+  }
+
+  .lead-row:hover {
+    background: rgba(255, 255, 255, 0.02);
+  }
+
+  .lead-hot {
+    background: rgba(255, 255, 255, 0.015);
+  }
+
+  .lead-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+    flex-shrink: 0;
+  }
+
+  .score-bar {
+    background: rgba(255, 255, 255, 0.5);
+    transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .lead-hot .score-bar {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .bg-white\/8 {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .estado-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border: 1px solid;
+  }
+
+  .estado-caliente {
+    color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .estado-tibio {
+    color: rgba(255, 255, 255, 0.55);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .estado-seguimiento {
+    color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.02);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .estado-frío {
+    color: rgba(255, 255, 255, 0.3);
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .accion-box {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    padding: 0.875rem 1rem;
+  }
+
+  .accion-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+  }
+</style>
