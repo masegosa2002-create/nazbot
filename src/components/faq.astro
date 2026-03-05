@@ -1,146 +1,96 @@
 ---
+const IG_URL = "https://www.instagram.com/nazbot.es/";
+
 const faqs = [
   {
-    pregunta: '"Esto ya lo intenta hacer mi equipo."',
-    respuesta:
-      "Tu equipo puede hacerlo. La pregunta es si lo hace siempre, a tiempo y sin errores. Un sistema no se olvida de los leads, no tiene días malos y no necesita que le recuerdes qué hacer. No sustituye a tu equipo: les libera de las tareas que no generan dinero.",
+    q: "¿Esto reemplaza a mi equipo?",
+    a: "No. Libera a tu equipo de tareas repetitivas (responder lo mismo, hacer seguimientos manuales, actualizar listas) y les deja tiempo para lo que importa: cerrar.",
   },
   {
-    pregunta: '"No sé si me va a dar resultado."',
-    respuesta:
-      "Es una duda razonable. Por eso ofrezco una llamada de encaje antes de cualquier compromiso. Si veo que tu negocio no tiene el volumen mínimo o el proceso adecuado, te lo digo con claridad. No me interesa venderte algo que no te va a funcionar.",
+    q: "¿Y si ya contestamos nosotros?",
+    a: "El sistema ayuda a responder antes, más rápido y de forma más ordenada. También hace el seguimiento que vuestro equipo no hace porque tiene otras prioridades.",
   },
   {
-    pregunta: '"Ahora mismo no es prioridad."',
-    respuesta:
-      "Entendido. Pero si tienes leads que no se responden o se pierden, el coste ya está ocurriendo. Cada semana sin sistema es facturación que no ves. La pregunta no es si es prioridad, sino cuánto está costando no tenerlo.",
+    q: "¿Esto sirve para cualquier negocio?",
+    a: "No para todos. Funciona mejor donde hay leads, conversaciones y seguimiento: servicios, clínicas, agencias, B2B. Si no sabes si es para ti, cuéntame tu caso.",
   },
   {
-    pregunta: '"Me parece caro."',
-    respuesta:
-      "Es una inversión puntual de 2.000–2.500€ que no se repite. Si el sistema te recupera 1 cliente que antes se perdía, ya empieza a pagarse. Y si recupera 5 o 10 al mes, las cuentas son evidentes. Además, pagas 50% cuando el sistema funciona: no hay riesgo de pagar y no recibir nada.",
+    q: "¿Cuánto tarda?",
+    a: "10–14 días desde que recibo los accesos. Después, 1 semana de estabilización. Total: entre 3 y 4 semanas hasta que el sistema va solo.",
+  },
+  {
+    q: "¿Y si mi caso es más complejo?",
+    a: "Se puede hacer un diagnóstico previo (250€, descontable si contratas el sprint) para entender bien el flujo antes de empezar.",
+  },
+  {
+    q: "¿Incluye mantenimiento?",
+    a: "El sprint incluye garantía de 15 días. Para soporte continuado, hay planes de mantenimiento opcionales que puedes añadir después según lo que necesites.",
   },
 ];
 ---
 
 <section id="faq" class="section-py relative bg-[#0b0b0b]">
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
 
   <div class="mx-auto max-w-3xl px-6 lg:px-12">
-
     <div class="mb-14 text-center reveal">
-      <span class="section-tag">Preguntas frecuentes</span>
+      <span class="section-tag">FAQ</span>
       <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-        Las dudas habituales,
+        Preguntas habituales,
         <span class="gradient-text"> respondidas sin rodeos.</span>
       </h2>
     </div>
 
-    <div class="flex flex-col gap-3 reveal">
+    <div class="flex flex-col gap-2.5 reveal">
       {faqs.map((faq, i) => (
-        <details class="faq-item" data-index={i}>
-          <summary class="faq-summary">
-            <span class="faq-pregunta">{faq.pregunta}</span>
-            <div class="faq-icon">
-              <svg class="icon-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <details class="faq-item" data-i={i}>
+          <summary class="faq-sum">
+            <span class="faq-q">{faq.q}</span>
+            <div class="faq-ico">
+              <svg class="ico-plus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M12 5v14M5 12h14" stroke-linecap="round"/>
               </svg>
-              <svg class="icon-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <svg class="ico-minus" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M5 12h14" stroke-linecap="round"/>
               </svg>
             </div>
           </summary>
-          <div class="faq-respuesta">
-            <p class="text-sm leading-relaxed text-offset">{faq.respuesta}</p>
+          <div class="faq-ans">
+            <p class="text-sm leading-relaxed text-white/50">{faq.a}</p>
           </div>
         </details>
       ))}
     </div>
 
-    <!-- Nota diagnóstico discreta -->
     <div class="mt-10 text-center reveal">
-      <p class="text-sm text-offset/40">
-        ¿Tu caso es especial o no encaja en ninguna de las opciones?
-        <a href="https://www.instagram.com/nazbot.es/" target="_blank" rel="noopener noreferrer" class="text-white/50 underline underline-offset-2 hover:text-white/70 transition-colors">
-          Cuéntamelo por DM
+      <p class="text-sm text-white/35">
+        ¿Tienes otra duda?
+        <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="text-[#4F9EFF]/60 hover:text-[#4F9EFF] transition-colors underline underline-offset-2 ml-1">
+          Escríbeme por DM
         </a>
-        y lo vemos juntos.
+        y te respondo.
       </p>
     </div>
-
   </div>
 </section>
 
 <style>
-  .section-py {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-
+  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
   .faq-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s ease;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px; overflow: hidden; transition: border-color 0.2s ease;
   }
-
-  .faq-item[open] {
-    border-color: rgba(255, 255, 255, 0.12);
+  .faq-item[open] { border-color: rgba(79,158,255,0.2); }
+  .faq-sum {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; padding: 1.25rem 1.5rem; cursor: pointer; list-style: none; user-select: none;
   }
-
-  .faq-summary {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: 1.25rem 1.5rem;
-    cursor: pointer;
-    list-style: none;
-    user-select: none;
-  }
-
-  .faq-summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .faq-pregunta {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.8);
-    line-height: 1.4;
-  }
-
-  .faq-icon {
-    flex-shrink: 0;
-    width: 20px;
-    height: 20px;
-    color: rgba(255, 255, 255, 0.3);
-    position: relative;
-  }
-
-  .icon-plus,
-  .icon-minus {
-    position: absolute;
-    inset: 0;
-    transition: opacity 0.2s ease;
-  }
-
-  .icon-minus {
-    opacity: 0;
-  }
-
-  details[open] .icon-plus {
-    opacity: 0;
-  }
-
-  details[open] .icon-minus {
-    opacity: 1;
-  }
-
-  .faq-respuesta {
-    padding: 0 1.5rem 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    padding-top: 1rem;
-  }
+  .faq-sum::-webkit-details-marker { display: none; }
+  .faq-q { font-size: 0.9rem; font-weight: 600; color: rgba(255,255,255,0.8); line-height: 1.4; }
+  .faq-ico { flex-shrink: 0; width: 18px; height: 18px; color: rgba(79,158,255,0.4); position: relative; }
+  .ico-plus, .ico-minus { position: absolute; inset: 0; transition: opacity 0.2s ease; }
+  .ico-minus { opacity: 0; }
+  details[open] .ico-plus { opacity: 0; }
+  details[open] .ico-minus { opacity: 1; }
+  .faq-ans { padding: 0 1.5rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 1rem; }
 </style>

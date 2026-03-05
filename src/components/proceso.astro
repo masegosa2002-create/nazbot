@@ -2,179 +2,108 @@
 const IG_URL = "https://www.instagram.com/nazbot.es/";
 
 const pasos = [
-  {
-    num: "01",
-    title: "Escríbeme 'SISTEMA' por DM",
-    desc: "En Instagram o TikTok. Es la única señal que necesito para saber que quieres información.",
-    detalle: "< 24h de respuesta",
-  },
-  {
-    num: "02",
-    title: "Llamada de encaje (20 min)",
-    desc: "Te pregunto sobre tu negocio, tus canales, tu proceso actual y tu objetivo. Con eso sé si el sistema tiene sentido para ti y te digo exactamente qué haría.",
-    detalle: "Sin compromiso",
-  },
-  {
-    num: "03",
-    title: "Onboarding: accesos y configuración",
-    desc: "Me das acceso a lo que necesito (WhatsApp Business, web, agenda). Aquí empieza el sprint. Sin reuniones interminables.",
-    detalle: "1–2 horas de tu tiempo",
-  },
-  {
-    num: "04",
-    title: "Sprint 10–14 días",
-    desc: "Configuro el sistema, lo pruebo, lo ajusto y te voy informando. Tú no tienes que hacer nada salvo responder alguna duda puntual.",
-    detalle: "Sin gestión de tu parte",
-  },
-  {
-    num: "05",
-    title: "Entrega + estabilización",
-    desc: "Te entrego el sistema funcionando, el vídeo Loom explicativo y el diagrama para tu equipo. Queda 1 semana de ajustes incluida.",
-    detalle: "Garantía 15 días",
-  },
+  { num: "01", title: "Me escribes", desc: "Escríbeme 'SISTEMA' por DM en Instagram o TikTok. Es la señal de que quieres información.", tag: "DM 'SISTEMA'" },
+  { num: "02", title: "Vemos el encaje", desc: "Llamada corta de 20 minutos. Te pregunto sobre tu negocio y te digo si el sistema tiene sentido para ti.", tag: "20 min · Gratis" },
+  { num: "03", title: "Recibo accesos y material", desc: "Me das acceso a WhatsApp Business, web y agenda. Aquí empieza el sprint. Sin reuniones interminables.", tag: "1–2h de tu tiempo" },
+  { num: "04", title: "Monto el sprint", desc: "Configuro, pruebo y ajusto. Tú no tienes que hacer nada salvo responder alguna duda puntual.", tag: "10–14 días" },
+  { num: "05", title: "Estabilizamos", desc: "1 semana de prueba real. Si algo falla o necesita ajuste, lo corrijo sin coste adicional.", tag: "Garantía 15 días" },
+  { num: "06", title: "Te entrego el sistema explicado", desc: "Vídeo Loom del sistema completo + diagrama para tu equipo. El sistema funciona solo desde ese momento.", tag: "Loom + diagrama" },
+];
+
+const reglas = [
+  "Plazo: 10–14 días desde que recibo accesos",
+  "Si faltan accesos, el proyecto se pausa",
+  "Soporte en horario laboral (respuesta mismo día)",
+  "Todo lo fuera de alcance se valora aparte",
 ];
 ---
 
 <section id="proceso" class="section-py relative bg-[#0d0d0d]">
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
 
   <div class="mx-auto max-w-5xl px-6 lg:px-12">
-
     <div class="mb-16 text-center reveal">
-      <span class="section-tag">El proceso</span>
+      <span class="section-tag">Cómo trabajamos</span>
       <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-        De DM a sistema funcionando
-        <span class="gradient-text"> en 5 pasos.</span>
+        De DM a sistema activo
+        <span class="gradient-text"> en 6 pasos.</span>
       </h2>
-      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
-        Todo empieza con un mensaje. Lo demás lo gestiono yo.
-      </p>
     </div>
 
     <div class="relative max-w-2xl mx-auto">
-      <div class="flex flex-col">
-        {pasos.map((paso, i) => (
-          <div class={`paso-row reveal delay-${(i + 1) * 100}`}>
-
-            <div class="paso-left">
-              <div class="paso-badge">{paso.num}</div>
-              {i < pasos.length - 1 && <div class="paso-linea"></div>}
+      {pasos.map((p, i) => (
+        <div class={`paso-row reveal delay-${Math.min((i + 1) * 100, 500)}`}>
+          <div class="paso-left">
+            <div class="paso-badge">{p.num}</div>
+            {i < pasos.length - 1 && <div class="paso-linea"></div>}
+          </div>
+          <div class="paso-right">
+            <div class="paso-top">
+              <h3 class="text-base font-semibold text-white">{p.title}</h3>
+              <span class="paso-tag">{p.tag}</span>
             </div>
+            <p class="mt-2 text-sm leading-relaxed text-white/48">{p.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
 
-            <div class="paso-right">
-              <div class="paso-top">
-                <h3 class="text-base font-semibold text-white">{paso.title}</h3>
-                <span class="paso-tag">{paso.detalle}</span>
-              </div>
-              <p class="mt-2 text-sm leading-relaxed text-offset">{paso.desc}</p>
-            </div>
-
+    <!-- Reglas -->
+    <div class="reglas-box mt-14 reveal">
+      <p class="reglas-title">Reglas del juego</p>
+      <div class="grid gap-2 sm:grid-cols-2">
+        {reglas.map((r) => (
+          <div class="regla-item">
+            <div class="regla-dot"></div>
+            <span class="text-sm text-white/50">{r}</span>
           </div>
         ))}
       </div>
     </div>
 
-    <div class="mt-14 text-center reveal">
-      <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="cta-dm">
+    <div class="mt-12 text-center reveal">
+      <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="btn-accent">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
           <circle cx="12" cy="12" r="4"/>
           <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
         </svg>
-        Empezar ahora — escríbeme 'SISTEMA'
+        Empezar — escríbeme "SISTEMA"
       </a>
     </div>
   </div>
 </section>
 
 <style>
-  .section-py {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-
-  .paso-row {
-    display: flex;
-    gap: 1.5rem;
-    padding-bottom: 0;
-  }
-
-  .paso-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 3rem;
-    flex-shrink: 0;
-  }
-
+  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
+  .paso-row { display: flex; gap: 1.5rem; }
+  .paso-left { display: flex; flex-direction: column; align-items: center; width: 3rem; flex-shrink: 0; }
   .paso-badge {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    color: rgba(255, 255, 255, 0.4);
+    display: flex; align-items: center; justify-content: center;
+    width: 3rem; height: 3rem; border-radius: 50%;
+    background: rgba(79,158,255,0.05); border: 1px solid rgba(79,158,255,0.2);
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.06em; color: rgba(79,158,255,0.6);
     flex-shrink: 0;
   }
-
   .paso-linea {
-    flex: 1;
-    width: 1px;
-    min-height: 1.5rem;
-    background: linear-gradient(to bottom, rgba(255,255,255,0.07), rgba(255,255,255,0.02));
+    flex: 1; width: 1px; min-height: 1.25rem;
+    background: linear-gradient(to bottom, rgba(79,158,255,0.15), rgba(79,158,255,0.02));
     margin: 0.375rem 0;
   }
-
-  .paso-right {
-    flex: 1;
-    padding-top: 0.75rem;
-    padding-bottom: 2.5rem;
-  }
-
-  .paso-top {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
+  .paso-right { flex: 1; padding-top: 0.75rem; padding-bottom: 2.25rem; }
+  .paso-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
   .paso-tag {
-    display: inline-block;
-    padding: 0.18rem 0.625rem;
-    border-radius: 100px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    font-size: 0.68rem;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.35);
-    white-space: nowrap;
-    flex-shrink: 0;
-    margin-top: 0.15rem;
+    display: inline-block; padding: 0.18rem 0.625rem; border-radius: 100px;
+    background: rgba(79,158,255,0.05); border: 1px solid rgba(79,158,255,0.12);
+    font-size: 0.68rem; font-weight: 600; color: rgba(79,158,255,0.5);
+    white-space: nowrap; flex-shrink: 0; margin-top: 0.15rem;
   }
-
-  .cta-dm {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #fff;
-    color: #0b0b0b;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 0.875rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+  .reglas-box {
+    padding: 1.5rem 2rem;
+    background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 12px;
   }
-
-  .cta-dm:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
-  }
+  .reglas-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 1rem; }
+  .regla-item { display: flex; align-items: flex-start; gap: 0.625rem; padding: 0.375rem 0; }
+  .regla-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,0.2); margin-top: 0.45rem; flex-shrink: 0; }
 </style>

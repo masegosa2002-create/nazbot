@@ -1,0 +1,114 @@
+---
+const bloques = [
+  {
+    num: "01",
+    title: "Captación y respuesta",
+    items: [
+      "WhatsApp Business con respuesta automática",
+      "Webchat instalado en tu web",
+      "Todos los canales conectados en un mismo flujo",
+    ],
+  },
+  {
+    num: "02",
+    title: "Clasificación y avance",
+    items: [
+      "Preguntas automáticas de cualificación",
+      "Filtrado de leads por intención y urgencia",
+      "Agendado directo o paso a venta según el perfil",
+    ],
+  },
+  {
+    num: "03",
+    title: "Seguimiento",
+    items: [
+      "Recordatorios automáticos",
+      "Recontacto si no responde (hasta 4 intentos)",
+      "Seguimiento activo hasta cierre o descarte",
+    ],
+  },
+  {
+    num: "04",
+    title: "Control",
+    items: [
+      "Panel central con todos los leads",
+      "Estado actualizado de cada oportunidad",
+      "Visibilidad total del proceso comercial",
+    ],
+  },
+];
+---
+
+<section id="sprint" class="section-py relative bg-[#0b0b0b]">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
+
+  <div class="mx-auto max-w-6xl px-6 lg:px-12">
+    <div class="mb-16 text-center reveal">
+      <span class="section-tag">El sprint</span>
+      <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        Qué queda montado
+        <span class="gradient-text"> dentro del sprint</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/50">
+        En 10–14 días tienes el sistema funcionando.
+        Entrega con Loom + diagrama explicativo + semana de estabilización.
+      </p>
+    </div>
+
+    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {bloques.map((b, i) => (
+        <div class={`sprint-card reveal delay-${(i + 1) * 100}`}>
+          <div class="sprint-num">{b.num}</div>
+          <h3 class="sprint-title">{b.title}</h3>
+          <ul class="sprint-items">
+            {b.items.map((item) => (
+              <li class="sprint-item">
+                <span class="item-dot"></span>
+                <span class="text-sm text-white/55">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 entrega-nota reveal">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#4F9EFF">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <p class="text-sm text-white/50">
+        <strong class="text-white/70">Entrega incluida:</strong> Sistema funcionando + vídeo Loom explicativo + diagrama del flujo + 1 semana de estabilización + garantía 15 días.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
+  .sprint-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px; padding: 1.75rem;
+    display: flex; flex-direction: column; gap: 1rem;
+    transition: border-color 0.2s ease;
+  }
+  .sprint-card:hover { border-color: rgba(79,158,255,0.18); }
+  .sprint-num {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
+    color: rgba(79,158,255,0.5);
+  }
+  .sprint-title { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.85); }
+  .sprint-items { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+  .sprint-item { display: flex; align-items: flex-start; gap: 0.5rem; }
+  .item-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: rgba(79,158,255,0.4); margin-top: 0.45rem; flex-shrink: 0;
+  }
+  .entrega-nota {
+    display: flex; align-items: flex-start; gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(79,158,255,0.04);
+    border: 1px solid rgba(79,158,255,0.12);
+    border-radius: 12px;
+  }
+</style>

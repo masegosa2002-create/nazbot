@@ -1,176 +1,110 @@
 ---
-const flujo = [
-  { label: "Captación", desc: "Lead entra por WhatsApp, web o anuncio" },
-  { label: "Respuesta", desc: "El sistema responde en segundos" },
-  { label: "Cualificación", desc: "Preguntas automáticas para filtrar intención" },
-  { label: "Cita", desc: "Agenda directamente en tu calendario" },
-  { label: "Seguimiento", desc: "Hasta 4 intentos si no responde" },
-  { label: "Cierre", desc: "Tú entras con el lead ya preparado" },
+const pasos = [
+  { num: "01", label: "Captación", desc: "Web, WhatsApp, formularios. Todos los canales conectados." },
+  { num: "02", label: "Respuesta automática", desc: "Primera respuesta rápida antes de que el lead enfríe." },
+  { num: "03", label: "Cualificación", desc: "Preguntas clave para saber si es un lead real y qué quiere." },
+  { num: "04", label: "Agenda", desc: "Cita o llamada reservada directamente desde el chat." },
+  { num: "05", label: "Seguimiento", desc: "Recordatorios y recontacto automático hasta cerrar o descartar." },
+  { num: "06", label: "Cierre y control", desc: "Todo registrado y visible. Sabes en qué punto está cada oportunidad." },
 ];
-
 const canales = [
-  {
-    icon: "💬",
-    nombre: "WhatsApp Business",
-    desc: "El canal donde ya están tus clientes. Respuesta y seguimiento automático.",
-  },
-  {
-    icon: "🌐",
-    nombre: "Webchat",
-    desc: "El chat de tu web convierte visitas en conversaciones cualificadas.",
-  },
-  {
-    icon: "📅",
-    nombre: "Agenda",
-    desc: "Integración con tu calendario. Las citas se bloquean solas.",
-  },
-  {
-    icon: "📊",
-    nombre: "Panel de control",
-    desc: "Todos los leads, estados y conversaciones en un sitio. Sin Excel.",
-  },
+  { ico: "💬", label: "WhatsApp + webchat" },
+  { ico: "📅", label: "Agenda conectada" },
+  { ico: "📊", label: "Panel tipo CRM" },
+  { ico: "🔁", label: "Seguimiento automático" },
 ];
 ---
 
-<section id="solucion" class="section-py relative bg-[#0d0d0d]">
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+<section id="como-funciona" class="section-py relative bg-[#0b0b0b]">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
 
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
-
-    <!-- Header -->
     <div class="mb-16 text-center reveal">
-      <span class="section-tag">La solución</span>
+      <span class="section-tag">Cómo funciona</span>
       <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-        Un sistema que trabaja
-        <span class="gradient-text"> desde el primer contacto hasta la cita.</span>
+        Así funciona
+        <span class="gradient-text"> el sistema que instalamos</span>
       </h2>
-      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
-        Lo instalamos en 10–14 días. A partir de ahí, funciona solo.
-        Tú ves los resultados en el panel.
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/50">
+        No vendemos un chatbot suelto. Vendemos un sistema comercial automatizado para que el lead
+        entre, reciba respuesta, avance y no se pierda.
       </p>
     </div>
 
-    <!-- Flujo visual -->
-    <div class="flujo-container mb-20 reveal">
-      <div class="flujo-title">El recorrido de cada lead</div>
-      <div class="flujo-pasos">
-        {flujo.map((paso, i) => (
-          <div class="flujo-paso">
-            <div class="flujo-num">{String(i + 1).padStart(2, "0")}</div>
-            <div class="flujo-label">{paso.label}</div>
-            <div class="flujo-desc">{paso.desc}</div>
-            {i < flujo.length - 1 && (
-              <div class="flujo-arrow">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
-
-    <!-- Canales -->
-    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 reveal">
-      {canales.map((c, i) => (
-        <div class={`canal-card reveal delay-${(i + 1) * 100}`}>
-          <div class="canal-icon">{c.icon}</div>
-          <h3 class="mt-3 text-sm font-semibold text-white">{c.nombre}</h3>
-          <p class="mt-2 text-xs leading-relaxed text-offset">{c.desc}</p>
+    <!-- Flujo 6 pasos -->
+    <div class="flujo-grid reveal mb-14">
+      {pasos.map((p, i) => (
+        <div class={`flujo-paso reveal delay-${(i + 1) * 100}`}>
+          <div class="flujo-num">{p.num}</div>
+          <div class="flujo-label">{p.label}</div>
+          <div class="flujo-desc">{p.desc}</div>
+          {i < pasos.length - 1 && (
+            <div class="flujo-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          )}
         </div>
       ))}
     </div>
 
-    <!-- Nota -->
-    <div class="mt-10 text-center reveal">
-      <p class="text-sm text-offset/50">
-        El sistema no impone herramientas. Se adapta a tu agenda actual y lo integramos todo.
-      </p>
+    <!-- Canales micro -->
+    <div class="canales-row reveal">
+      {canales.map((c) => (
+        <div class="canal-pill">
+          <span>{c.ico}</span>
+          <span class="text-sm text-white/60 font-medium">{c.label}</span>
+        </div>
+      ))}
     </div>
-
   </div>
 </section>
 
 <style>
-  .section-py {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
+  .flujo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
-
-  .flujo-container {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 14px;
-    padding: 2rem;
-    overflow-x: auto;
+  @media (min-width: 768px) {
+    .flujo-grid { grid-template-columns: repeat(3, 1fr); }
   }
-
-  .flujo-title {
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.25);
-    margin-bottom: 1.5rem;
+  @media (min-width: 1024px) {
+    .flujo-grid { grid-template-columns: repeat(6, 1fr); }
   }
-
-  .flujo-pasos {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    min-width: 640px;
-  }
-
   .flujo-paso {
     position: relative;
-    flex: 1;
-    padding-right: 1.5rem;
-  }
-
-  .flujo-num {
-    font-size: 0.65rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.2);
-    margin-bottom: 0.5rem;
-  }
-
-  .flujo-label {
-    font-size: 0.875rem;
-    font-weight: 700;
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 0.375rem;
-  }
-
-  .flujo-desc {
-    font-size: 0.72rem;
-    line-height: 1.4;
-    color: rgba(255, 255, 255, 0.4);
-  }
-
-  .flujo-arrow {
-    position: absolute;
-    right: -0.25rem;
-    top: 1.4rem;
-    color: rgba(255, 255, 255, 0.15);
-  }
-
-  .canal-card {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
     border-radius: 12px;
-    padding: 1.5rem;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    padding: 1.25rem 1rem;
+    transition: border-color 0.2s ease;
   }
-
-  .canal-card:hover {
-    border-color: rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.04);
+  .flujo-paso:hover { border-color: rgba(79,158,255,0.2); }
+  .flujo-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; color: rgba(79,158,255,0.5); margin-bottom: 0.5rem; }
+  .flujo-label { font-size: 0.85rem; font-weight: 700; color: rgba(255,255,255,0.85); margin-bottom: 0.375rem; }
+  .flujo-desc { font-size: 0.72rem; line-height: 1.4; color: rgba(255,255,255,0.38); }
+  .flujo-arrow {
+    display: none;
   }
-
-  .canal-icon {
-    font-size: 1.5rem;
-    line-height: 1;
+  @media (min-width: 1024px) {
+    .flujo-arrow {
+      display: block;
+      position: absolute; right: -0.9rem; top: 50%;
+      transform: translateY(-50%);
+      color: rgba(79,158,255,0.2); z-index: 1;
+    }
+  }
+  .canales-row {
+    display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center;
+  }
+  .canal-pill {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: rgba(79,158,255,0.04);
+    border: 1px solid rgba(79,158,255,0.12);
+    border-radius: 100px;
   }
 </style>

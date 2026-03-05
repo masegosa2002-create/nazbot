@@ -1,45 +1,42 @@
 ---
 const incluye = [
-  "Configuración completa de WhatsApp Business con respuesta automática",
-  "Webchat instalado y activo en tu web",
-  "Integración con tu calendario o agenda (la que ya uses)",
-  "Panel de control centralizado — todos los leads en un sitio",
-  "Flujo de cualificación automática según tu negocio",
-  "Seguimiento automático: hasta 4 intentos por lead (2 por semana / 14 días)",
-  "1 semana de estabilización incluida",
+  "WhatsApp Business con respuesta y seguimiento automatizados",
+  "Webchat instalado en tu web",
+  "Integración con tu agenda o calendario actual",
+  "Panel de control centralizado (todos los leads en un sitio)",
+  "Flujo de cualificación personalizado según tu negocio",
+  "Seguimiento automático: hasta 4 intentos / 14 días",
+  "1 semana de estabilización",
   "Vídeo Loom explicativo del sistema completo",
   "Diagrama del flujo para tu equipo",
   "Garantía de 15 días (ajustes y correcciones sin coste)",
 ];
 
 const noIncluye = [
-  "Migración de datos históricos o listas de contactos antiguas",
-  "Creación o gestión de campañas de publicidad (Meta, Google, etc.)",
-  "Integraciones con ERPs complejos o software legacy",
+  "Migración de datos históricos o listas antiguas",
+  "Creación o gestión de campañas de publicidad",
+  "Integraciones con ERPs o software legacy",
   "Redacción de contenido o diseño gráfico",
-  "Soporte continuado fuera del período de garantía (disponible aparte)",
+  "Soporte continuado fuera del período de garantía",
 ];
 ---
 
 <section id="incluye" class="section-py relative bg-[#0d0d0d]">
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
 
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
-
     <div class="mb-16 text-center reveal">
-      <span class="section-tag">El sprint incluye</span>
+      <span class="section-tag">Qué incluye</span>
       <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
         Sin letra pequeña.
         <span class="gradient-text"> Lo que está dentro, está dentro.</span>
       </h2>
     </div>
 
-    <div class="grid gap-6 lg:grid-cols-2 reveal">
-
-      <!-- Incluye -->
+    <div class="grid gap-5 lg:grid-cols-2 reveal">
       <div class="lista-card">
-        <div class="lista-header lista-si">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <div class="lista-head head-si">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color:#4F9EFF">
             <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
           <span>Incluye</span>
@@ -48,15 +45,14 @@ const noIncluye = [
           {incluye.map((item) => (
             <li class="lista-item">
               <div class="item-dot dot-si"></div>
-              <span class="text-sm text-white/70">{item}</span>
+              <span class="text-sm text-white/65">{item}</span>
             </li>
           ))}
         </ul>
       </div>
 
-      <!-- No incluye -->
       <div class="lista-card">
-        <div class="lista-header lista-no">
+        <div class="lista-head head-no">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
             <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
           </svg>
@@ -66,87 +62,34 @@ const noIncluye = [
           {noIncluye.map((item) => (
             <li class="lista-item">
               <div class="item-dot dot-no"></div>
-              <span class="text-sm text-white/40">{item}</span>
+              <span class="text-sm text-white/38">{item}</span>
             </li>
           ))}
         </ul>
         <div class="nota-no">
-          <p class="text-xs text-offset/40">
-            ¿Necesitas algo de esta lista? Cuéntamelo y vemos si tiene solución.
+          <p class="text-xs text-white/30">
+            ¿Necesitas algo de esta lista? Cuéntamelo por DM y lo valoramos.
           </p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
 <style>
-  .section-py {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
+  .lista-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; overflow: hidden; }
+  .lista-head {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 1rem 1.5rem; font-size: 0.8rem; font-weight: 700;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
-
-  .lista-card {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 14px;
-    overflow: hidden;
-  }
-
-  .lista-header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-  }
-
-  .lista-si {
-    color: rgba(255, 255, 255, 0.65);
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .lista-no {
-    color: rgba(255, 255, 255, 0.25);
-    background: transparent;
-  }
-
-  .lista-items {
-    list-style: none;
-    padding: 1.25rem 1.5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-  }
-
-  .lista-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .item-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    margin-top: 0.45rem;
-    flex-shrink: 0;
-  }
-
-  .dot-si {
-    background: rgba(255, 255, 255, 0.4);
-  }
-
-  .dot-no {
-    background: rgba(255, 255, 255, 0.12);
-  }
-
-  .nota-no {
-    padding: 0.75rem 1.5rem 1.25rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
-  }
+  .head-si { color: rgba(79,158,255,0.7); background: rgba(79,158,255,0.04); }
+  .head-no { color: rgba(255,255,255,0.28); background: transparent; }
+  .lista-items { list-style: none; padding: 1.25rem 1.5rem; display: flex; flex-direction: column; gap: 0.875rem; }
+  .lista-item { display: flex; align-items: flex-start; gap: 0.75rem; }
+  .item-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 0.45rem; flex-shrink: 0; }
+  .dot-si { background: rgba(79,158,255,0.5); }
+  .dot-no { background: rgba(255,255,255,0.15); }
+  .nota-no { padding: 0.75rem 1.5rem 1.25rem; border-top: 1px solid rgba(255,255,255,0.04); }
 </style>

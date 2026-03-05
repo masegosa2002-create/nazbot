@@ -1,121 +1,76 @@
 ---
-const problemas = [
+const dolores = [
   {
-    num: "01",
-    title: "Leads que llegan y no se responden a tiempo",
-    desc: "El cliente pregunta por WhatsApp o rellena el formulario. Tu equipo tarda horas o días en responder. Para entonces, ya llamó a otro.",
+    icon: "⏱️",
+    title: "Respondes tarde",
+    desc: "Los leads se enfrían. Cuando contestas horas después, el cliente ya habló con otro.",
   },
   {
-    num: "02",
-    title: "Seguimiento que no existe",
-    desc: "El lead no contestó el primer mensaje. Nadie hace el segundo, el tercero ni el cuarto. Ese cliente no está perdido — está esperando que le insistas.",
+    icon: "📵",
+    title: "No haces seguimiento",
+    desc: "Se queda en 'luego les escribo'. Ese segundo mensaje nunca llega. La oportunidad se pierde.",
   },
   {
-    num: "03",
-    title: "Datos dispersos que nadie revisa",
-    desc: "Notas en el móvil, Excel sin actualizar, chats sin etiquetar. No sabes cuántos leads tienes, en qué estado están ni cuántos se perdieron este mes.",
+    icon: "🗂️",
+    title: "Todo está disperso",
+    desc: "WhatsApp, formularios, agenda, notas del móvil. Nadie sabe en qué punto está cada lead.",
   },
   {
-    num: "04",
-    title: "Tu equipo gestionando tareas que debería hacer un sistema",
-    desc: "Recordar a quién llamar, escribir mensajes de seguimiento, confirmar citas... Horas de trabajo manual que no generan dinero.",
+    icon: "😓",
+    title: "Tu equipo carga con todo",
+    desc: "Tareas repetitivas, poco control, mucho estrés. Y aún así siguen cayendo oportunidades.",
   },
-];
-
-const cambios = [
-  "Respuesta automática en segundos, no en horas",
-  "Seguimiento completo hasta 4 intentos por lead",
-  "Todos los datos en un panel que se actualiza solo",
-  "Tu equipo solo interviene cuando el lead está listo",
 ];
 ---
 
-<section id="problema" class="section-py relative bg-[#0b0b0b]">
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+<section id="problema" class="section-py relative bg-[#0d0d0d]">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
 
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
-
-    <div class="mb-16 reveal">
-      <span class="section-tag">Por qué pierdes dinero</span>
+    <div class="mb-16 max-w-3xl reveal">
+      <span class="section-tag">El problema</span>
       <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-        Cada mes tu negocio deja ir
-        <span class="gradient-text"> clientes que ya estaban interesados.</span>
+        No pierdes leads por falta de interés.
+        <span class="gradient-text"> Los pierdes por falta de sistema.</span>
       </h2>
-      <p class="mt-4 max-w-xl text-base leading-relaxed text-offset">
-        No es falta de leads. Es que el proceso entre "entra un lead" y "se cierra" está roto.
-      </p>
     </div>
 
-    <!-- Problemas -->
-    <div class="grid gap-0 mb-16">
-      {problemas.map((p, i) => (
-        <div class={`problema-row reveal delay-${(i + 1) * 100} ${i < problemas.length - 1 ? "border-b border-white/[0.05]" : ""}`}>
-          <span class="problema-num">{p.num}</span>
-          <div class="problema-body">
-            <h3 class="text-base font-semibold text-white">{p.title}</h3>
-            <p class="mt-1.5 text-sm leading-relaxed text-offset max-w-2xl">{p.desc}</p>
-          </div>
+    <div class="grid gap-4 sm:grid-cols-2 reveal">
+      {dolores.map((d, i) => (
+        <div class={`dolor-card reveal delay-${(i + 1) * 100}`}>
+          <div class="dolor-icon">{d.icon}</div>
+          <h3 class="mt-4 text-base font-semibold text-white">{d.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-white/50">{d.desc}</p>
         </div>
       ))}
     </div>
 
-    <!-- Cambios -->
-    <div class="cambios-box reveal">
-      <p class="text-xs font-semibold uppercase tracking-widest text-white/30 mb-5">
-        Qué cambia con el sistema
+    <div class="mt-12 cierre-box reveal">
+      <p class="text-sm leading-relaxed text-white/60">
+        Nazbot monta un sistema para que captar, responder y seguir
+        <strong class="text-white/80"> no dependa de la memoria ni del caos del día a día.</strong>
       </p>
-      <div class="grid gap-3 sm:grid-cols-2">
-        {cambios.map((c) => (
-          <div class="cambio-item">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0 text-white/40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span class="text-sm text-white/70">{c}</span>
-          </div>
-        ))}
-      </div>
     </div>
-
   </div>
 </section>
 
 <style>
-  .section-py {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
+  .dolor-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 14px; padding: 1.75rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
   }
-
-  .problema-row {
-    display: flex;
-    align-items: flex-start;
-    gap: 2rem;
-    padding: 1.75rem 0;
+  .dolor-card:hover {
+    border-color: rgba(79,158,255,0.15);
+    background: rgba(79,158,255,0.02);
   }
-
-  .problema-num {
-    font-size: 0.7rem;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.18);
-    padding-top: 0.2rem;
-    flex-shrink: 0;
-    width: 2rem;
-  }
-
-  .problema-body {
-    flex: 1;
-  }
-
-  .cambios-box {
-    background: rgba(255, 255, 255, 0.025);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 14px;
-    padding: 2rem;
-  }
-
-  .cambio-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.625rem;
+  .dolor-icon { font-size: 1.75rem; line-height: 1; }
+  .cierre-box {
+    padding: 1.5rem 2rem;
+    background: rgba(79,158,255,0.04);
+    border: 1px solid rgba(79,158,255,0.12);
+    border-radius: 12px;
   }
 </style>

@@ -1,209 +1,42 @@
 ---
 const IG_URL = "https://www.instagram.com/nazbot.es/";
-const EMAIL = "hola@nazbot.es";
 ---
 
 <section id="cta" class="section-py relative overflow-hidden bg-[#0f0f0f]">
-  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
+  <div class="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full opacity-8"
+    style="background: radial-gradient(ellipse, rgba(79,158,255,0.06) 0%, transparent 65%);"></div>
 
-  <!-- Ambient glow -->
-  <div
-    class="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full opacity-8"
-    style="background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 65%);"
-  ></div>
-
-  <div class="relative mx-auto max-w-3xl px-6 text-center lg:px-12">
-
+  <div class="relative mx-auto max-w-2xl px-6 text-center lg:px-12">
     <div class="reveal">
       <span class="section-tag">Empieza hoy</span>
       <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-        Un mensaje.
-        <span class="gradient-text"> Todo empieza ahí.</span>
+        Si hoy estás perdiendo leads
+        <span class="gradient-text"> por falta de seguimiento, esto te interesa.</span>
       </h2>
-      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
-        Escríbeme 'SISTEMA' por DM en Instagram o TikTok. Te respondo en menos de 24 horas
-        con información o para coordinar una llamada de encaje gratuita.
+      <p class="mx-auto mt-5 max-w-xl text-base leading-relaxed text-white/50">
+        Nazbot instala un sistema claro para captar, responder y seguir mejor
+        sin depender del caos diario. Un mensaje es suficiente para empezar.
       </p>
     </div>
 
-    <!-- CTA principal -->
-    <div class="mt-10 reveal delay-100">
-      <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="cta-main">
+    <div class="mt-10 flex flex-col items-center gap-4 reveal delay-100">
+      <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="btn-accent text-base px-10 py-4">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
           <circle cx="12" cy="12" r="4"/>
           <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
         </svg>
-        Escríbeme 'SISTEMA' por DM
+        Escríbeme "SISTEMA" por DM
       </a>
-      <p class="mt-4 text-xs text-offset/40">
-        Sin compromiso · Respondo en &lt; 24h · Llamada de encaje gratuita
-      </p>
+      <a href="#demos" class="text-sm text-white/35 hover:text-white/60 transition-colors">
+        Ver demo primero
+      </a>
+      <p class="text-xs text-white/25">Sin compromiso · Respondo en menos de 24h</p>
     </div>
-
-    <!-- Divider -->
-    <div class="alt-divider reveal delay-150">
-      <span>o si prefieres el email</span>
-    </div>
-
-    <!-- Formulario alternativo -->
-    <form id="lead-form" class="reveal delay-200 text-left" novalidate>
-      <div class="grid gap-4 sm:grid-cols-2">
-        <div class="form-group">
-          <label for="nombre" class="form-label">Nombre</label>
-          <input type="text" id="nombre" name="nombre" class="form-input" placeholder="Tu nombre" required />
-        </div>
-        <div class="form-group">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" id="email" name="email" class="form-input" placeholder="tu@empresa.com" required />
-        </div>
-        <div class="form-group sm:col-span-2">
-          <label for="mensaje" class="form-label">¿Cuál es tu situación ahora mismo?</label>
-          <textarea id="mensaje" name="mensaje" class="form-input" rows="3" placeholder="Cuéntame en 2 líneas cómo gestionas tus leads hoy y qué quieres mejorar." required></textarea>
-        </div>
-      </div>
-      <div class="mt-5 flex flex-col items-center gap-3">
-        <button type="submit" class="form-btn w-full sm:w-auto sm:px-12">
-          Enviar mensaje
-        </button>
-        <p class="text-xs text-offset/40">Sin spam. Solo te escribo si tiene sentido hablar.</p>
-      </div>
-    </form>
-
-    <!-- Success -->
-    <div id="form-success" class="mt-8 hidden text-center">
-      <div class="success-card mx-auto max-w-xs">
-        <div class="mb-3 flex justify-center">
-          <div class="check-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-              <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-        </div>
-        <h3 class="text-base font-bold text-white">Mensaje recibido</h3>
-        <p class="mt-1.5 text-sm text-offset">Te escribo en menos de 24 horas.</p>
-      </div>
-    </div>
-
   </div>
 </section>
 
-<script>
-  const form = document.getElementById("lead-form") as HTMLFormElement;
-  const successDiv = document.getElementById("form-success");
-
-  form?.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const nombre = (document.getElementById("nombre") as HTMLInputElement).value.trim();
-    const email = (document.getElementById("email") as HTMLInputElement).value.trim();
-    const mensaje = (document.getElementById("mensaje") as HTMLTextAreaElement).value.trim();
-
-    const texto = [
-      `Hola, vengo de nazbot.space 👋`,
-      ``,
-      `*Nombre:* ${nombre}`,
-      `*Email:* ${email}`,
-      `*Situación:* ${mensaje}`,
-    ].join("\n");
-
-    const url = `https://wa.me/34659426999?text=${encodeURIComponent(texto)}`;
-    window.open(url, "_blank");
-
-    form.style.display = "none";
-    if (successDiv) successDiv.classList.remove("hidden");
-  });
-</script>
-
 <style>
-  .section-py {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
-  }
-
-  .cta-main {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.625rem;
-    background: #fff;
-    color: #0b0b0b;
-    font-weight: 700;
-    font-size: 1rem;
-    padding: 1rem 2rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-  }
-
-  .cta-main:hover {
-    opacity: 0.9;
-    transform: translateY(-2px);
-  }
-
-  .alt-divider {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin: 2rem 0;
-    color: rgba(255, 255, 255, 0.2);
-    font-size: 0.75rem;
-  }
-
-  .alt-divider::before,
-  .alt-divider::after {
-    content: "";
-    flex: 1;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.07);
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.375rem;
-  }
-
-  .form-label {
-    font-size: 0.78rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.45);
-  }
-
-  .form-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    color: rgba(255, 255, 255, 0.75);
-    font-weight: 600;
-    font-size: 0.875rem;
-    padding: 0.875rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-
-  .form-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.18);
-    color: rgba(255, 255, 255, 0.9);
-  }
-
-  .success-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 12px;
-    padding: 1.75rem;
-  }
-
-  .check-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.25rem;
-    height: 2.25rem;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-  }
+  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
 </style>

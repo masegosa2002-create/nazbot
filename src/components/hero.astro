@@ -1,82 +1,131 @@
 ---
 import Starfield from "~/components/starfield.astro";
-
 const IG_URL = "https://www.instagram.com/nazbot.es/";
 ---
 
-<section class="hero relative flex min-h-screen items-center overflow-hidden bg-[#0b0b0b]">
-  <div class="absolute inset-0 opacity-15">
-    <Starfield />
-  </div>
-  <div class="absolute inset-0 grid-pattern opacity-40"></div>
-  <div
-    class="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-    style="background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 65%);"
-  ></div>
+<section id="inicio" class="hero relative flex min-h-screen items-center overflow-hidden bg-[#0b0b0b]">
+  <div class="absolute inset-0 opacity-10"><Starfield /></div>
+  <div class="absolute inset-0 grid-pattern opacity-30"></div>
+  <div class="pointer-events-none absolute left-1/4 top-1/3 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+    style="background: radial-gradient(circle, rgba(79,158,255,0.05) 0%, transparent 65%);"></div>
 
-  <div class="relative z-10 mx-auto w-full max-w-5xl px-6 pb-16 pt-28 lg:px-12 lg:pb-24 lg:pt-44">
-    <div class="flex flex-col items-center text-center gap-7 max-w-4xl mx-auto">
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-28 lg:px-12 lg:pb-24 lg:pt-40">
+    <div class="grid items-center gap-16 lg:grid-cols-2">
 
-      <!-- Badge -->
-      <div class="hero-badge">
-        <span class="badge-dot"></span>
-        <span>Sistema comercial con IA · Sprint 10–14 días</span>
+      <div class="flex flex-col gap-7">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          Sistema comercial con IA · Sprint 10–14 días
+        </div>
+
+        <h1 class="text-4xl font-extrabold leading-[1.07] tracking-tight text-white sm:text-5xl lg:text-[3.6rem]">
+          Captar, responder y seguir leads
+          <span class="gradient-text"> sin perder ninguno.</span>
+        </h1>
+
+        <p class="max-w-xl text-base leading-relaxed text-white/55 sm:text-lg">
+          Nazbot instala sistemas con agentes empresariales para que tu negocio responda mejor,
+          recupere oportunidades y convierta más conversaciones en citas o ventas.
+        </p>
+
+        <div class="flex flex-col gap-3">
+          {[
+            "Responde leads más rápido que tu competencia",
+            "Seguimiento automático hasta que cierran o descartan",
+            "Convierte más conversaciones en citas o ventas",
+          ].map((b) => (
+            <div class="bullet-item">
+              <div class="bullet-check">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <span class="text-sm text-white/65">{b}</span>
+            </div>
+          ))}
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="btn-accent">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Escríbeme "SISTEMA" por DM
+          </a>
+          <a href="#demos" class="btn-secondary">
+            Ver demo
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <p class="text-xs text-white/25">Sin compromiso · Respondo en menos de 24h</p>
       </div>
 
-      <!-- H1 -->
-      <h1 class="text-4xl font-extrabold leading-[1.07] tracking-tight text-white sm:text-5xl lg:text-[4rem]">
-        Tu negocio pierde leads cada día
-        <span class="gradient-text"> porque no tiene sistema.</span>
-      </h1>
+      <!-- Right: Pipeline mockup -->
+      <div class="hidden lg:block">
+        <div class="mockup-container">
+          <div class="mockup-header">
+            <div class="flex items-center gap-1.5">
+              <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
+            </div>
+            <span class="mockup-title">Pipeline · Nazbot</span>
+            <div class="flex items-center gap-1.5">
+              <span class="live-dot"></span>
+              <span class="text-xs text-white/25">en vivo</span>
+            </div>
+          </div>
 
-      <!-- Subheadline -->
-      <p class="max-w-2xl text-base leading-relaxed text-offset sm:text-lg">
-        Instalamos agentes empresariales que responden, cualifican y agendan automáticamente.
-        En 10–14 días tienes el sistema funcionando. Tú solo apareces a cerrar.
-      </p>
+          <div class="mockup-stats">
+            {[
+              { val: "24", label: "leads hoy" },
+              { val: "18", label: "respondidos" },
+              { val: "6", label: "citas hoy" },
+            ].map((s) => (
+              <div class="stat-pill">
+                <span class="stat-val">{s.val}</span>
+                <span class="stat-label">{s.label}</span>
+              </div>
+            ))}
+          </div>
 
-      <!-- 3 bullets -->
-      <div class="bullets-grid">
-        {[
-          "Seguimiento automático de todos tus leads sin depender de tu equipo",
-          "Citas agendadas sin intervención manual desde WhatsApp o tu web",
-          "Registro y control de todo en un panel claro — sin hojas de cálculo",
-        ].map((b) => (
-          <div class="bullet-item">
-            <div class="bullet-check">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+          <div class="mockup-leads">
+            {[
+              { name: "Clínica Estética Sol", canal: "WhatsApp", estado: "Cita confirmada", type: "cita" },
+              { name: "Consultoría Avance", canal: "Webchat", estado: "En seguimiento", type: "seg" },
+              { name: "Reformas Vidal", canal: "Formulario", estado: "Cualificando", type: "cua" },
+              { name: "Talleres Moreno", canal: "WhatsApp", estado: "Nuevo lead", type: "new" },
+            ].map((lead) => (
+              <div class="lead-row">
+                <div class="lead-av">{lead.name.charAt(0)}</div>
+                <div class="lead-info">
+                  <span class="lead-name">{lead.name}</span>
+                  <span class="lead-canal">{lead.canal}</span>
+                </div>
+                <span class={`lead-badge badge-${lead.type}`}>{lead.estado}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="mockup-accion">
+            <div class="accion-ico">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#4F9EFF">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <span class="text-sm text-white/70">{b}</span>
+            <p class="text-xs text-white/45">
+              Seguimiento enviado a <strong class="text-white/65">Consultoría Avance</strong> — 2.º intento automático
+            </p>
           </div>
-        ))}
+        </div>
       </div>
 
-      <!-- CTAs -->
-      <div class="flex flex-col items-center gap-4 mt-2 w-full sm:flex-row sm:justify-center">
-        <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="cta-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-            <circle cx="12" cy="12" r="4"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-          </svg>
-          Escríbeme 'SISTEMA' por DM
-        </a>
-        <a href="#demos" class="cta-secondary">
-          Ver demo
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </div>
-
-      <p class="text-xs text-offset/40">Sin compromiso · Respondo en menos de 24h</p>
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-20">
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce opacity-15">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
       <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
     </svg>
@@ -85,95 +134,86 @@ const IG_URL = "https://www.instagram.com/nazbot.es/";
 
 <style>
   .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
+    display: inline-flex; align-items: center; gap: 0.5rem;
     padding: 0.35rem 1rem;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 100px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: rgba(255, 255, 255, 0.5);
-    letter-spacing: 0.01em;
+    background: rgba(79,158,255,0.05); border: 1px solid rgba(79,158,255,0.18);
+    border-radius: 100px; font-size: 0.73rem; font-weight: 500;
+    color: rgba(79,158,255,0.75);
   }
-
   .badge-dot {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.4);
-    animation: pulse 2.5s ease-in-out infinite;
+    width: 6px; height: 6px; border-radius: 50%; background: #4F9EFF;
+    animation: bpulse 2.5s ease-in-out infinite;
   }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
+  @keyframes bpulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; box-shadow: 0 0 0 4px rgba(79,158,255,0.15); }
   }
-
-  .bullets-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    max-width: 36rem;
-    text-align: left;
-  }
-
-  .bullet-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
+  .bullet-item { display: flex; align-items: flex-start; gap: 0.75rem; }
   .bullet-check {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    flex-shrink: 0;
-    margin-top: 0.05rem;
-    color: rgba(255, 255, 255, 0.6);
+    display: flex; align-items: center; justify-content: center;
+    width: 18px; height: 18px; border-radius: 50%;
+    background: rgba(79,158,255,0.1); border: 1px solid rgba(79,158,255,0.25);
+    flex-shrink: 0; margin-top: 0.1rem; color: #4F9EFF;
   }
-
-  .cta-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    background: #fff;
-    color: #0b0b0b;
-    font-weight: 700;
-    font-size: 0.95rem;
-    padding: 0.875rem 1.75rem;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
-    white-space: nowrap;
+  .mockup-container {
+    background: #0f0f0f; border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 14px; overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(79,158,255,0.04);
   }
-
-  .cta-primary:hover {
-    opacity: 0.92;
-    transform: translateY(-1px);
+  .mockup-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0.75rem 1.25rem; background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
-
-  .cta-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 0.875rem;
-    font-weight: 500;
-    text-decoration: none;
-    padding: 0.875rem 1rem;
-    transition: color 0.2s ease;
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-r { background: rgba(255,95,87,0.35); }
+  .dot-y { background: rgba(255,189,68,0.35); }
+  .dot-g { background: rgba(40,200,64,0.35); }
+  .mockup-title { font-size: 0.7rem; font-weight: 600; color: rgba(255,255,255,0.3); letter-spacing: 0.04em; }
+  .live-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #4F9EFF; animation: bpulse 2s ease-in-out infinite; }
+  .mockup-stats {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 0.75rem; padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
-
-  .cta-secondary:hover {
-    color: rgba(255, 255, 255, 0.85);
+  .stat-pill {
+    background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 8px; padding: 0.625rem; text-align: center;
+  }
+  .stat-val { display: block; font-size: 1.35rem; font-weight: 800; color: rgba(255,255,255,0.9); line-height: 1; }
+  .stat-label { display: block; font-size: 0.63rem; color: rgba(255,255,255,0.3); margin-top: 0.25rem; }
+  .mockup-leads { display: flex; flex-direction: column; }
+  .lead-row {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.7rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: background 0.15s;
+  }
+  .lead-row:hover { background: rgba(255,255,255,0.018); }
+  .lead-av {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: rgba(79,158,255,0.08); border: 1px solid rgba(79,158,255,0.18);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 700; color: #4F9EFF; flex-shrink: 0;
+  }
+  .lead-info { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
+  .lead-name { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+  .lead-canal { font-size: 0.65rem; color: rgba(255,255,255,0.28); }
+  .lead-badge {
+    font-size: 0.63rem; font-weight: 600; padding: 0.18rem 0.5rem;
+    border-radius: 100px; border: 1px solid; white-space: nowrap;
+  }
+  .badge-cita { color: #4F9EFF; background: rgba(79,158,255,0.08); border-color: rgba(79,158,255,0.2); }
+  .badge-seg { color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
+  .badge-cua { color: rgba(255,255,255,0.35); background: transparent; border-color: rgba(255,255,255,0.07); }
+  .badge-new { color: rgba(79,158,255,0.5); background: rgba(79,158,255,0.04); border-color: rgba(79,158,255,0.1); }
+  .mockup-accion {
+    display: flex; align-items: center; gap: 0.625rem;
+    padding: 0.875rem 1.25rem;
+    background: rgba(79,158,255,0.03); border-top: 1px solid rgba(79,158,255,0.07);
+  }
+  .accion-ico {
+    display: flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 6px;
+    background: rgba(79,158,255,0.08); border: 1px solid rgba(79,158,255,0.15); flex-shrink: 0;
   }
 </style>

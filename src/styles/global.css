@@ -120,10 +120,52 @@ a,
    ============================================= */
 
 .gradient-text {
-  background: linear-gradient(135deg, #ffffff 30%, #8f8f8f 100%);
+  background: linear-gradient(135deg, #4F9EFF 0%, #a5c8ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* =============================================
+   ACCENT COLOR UTILITIES
+   ============================================= */
+
+.accent-text {
+  color: #4F9EFF;
+}
+
+.accent-bg {
+  background: #4F9EFF;
+}
+
+.accent-border {
+  border-color: rgba(79, 158, 255, 0.3);
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: #4F9EFF;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  border: 1px solid #4F9EFF;
+  border-radius: 7px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btn-accent:hover {
+  background: #6aadff;
+  border-color: #6aadff;
+  box-shadow: 0 0 24px rgba(79, 158, 255, 0.35), 0 0 48px rgba(79, 158, 255, 0.12);
+  transform: translateY(-1px);
 }
 
 /* =============================================
@@ -137,9 +179,10 @@ a,
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #8f8f8f;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(79, 158, 255, 0.7);
+  border: 1px solid rgba(79, 158, 255, 0.2);
   border-radius: 100px;
+  background: rgba(79, 158, 255, 0.04);
 }
 
 /* =============================================
