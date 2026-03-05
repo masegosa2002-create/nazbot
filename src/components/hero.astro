@@ -1,72 +1,77 @@
 ---
 import Starfield from "~/components/starfield.astro";
+
+const IG_URL = "https://www.instagram.com/nazbot.es/";
 ---
 
 <section class="hero relative flex min-h-screen items-center overflow-hidden bg-[#0b0b0b]">
-  <!-- Starfield canvas -->
-  <div class="absolute inset-0 opacity-20">
+  <div class="absolute inset-0 opacity-15">
     <Starfield />
   </div>
-
-  <!-- Grid pattern overlay -->
-  <div class="absolute inset-0 grid-pattern opacity-50"></div>
-
-  <!-- Radial glow -->
+  <div class="absolute inset-0 grid-pattern opacity-40"></div>
   <div
-    class="pointer-events-none absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full"
-    style="background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);"
+    class="pointer-events-none absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full"
+    style="background: radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 65%);"
   ></div>
 
-  <div class="relative z-10 mx-auto w-full max-w-6xl px-6 pb-16 pt-28 lg:px-12 lg:pb-24 lg:pt-40">
-    <div class="flex flex-col items-center text-center gap-8 max-w-4xl mx-auto">
+  <div class="relative z-10 mx-auto w-full max-w-5xl px-6 pb-16 pt-28 lg:px-12 lg:pb-24 lg:pt-44">
+    <div class="flex flex-col items-center text-center gap-7 max-w-4xl mx-auto">
 
-      <!-- Tag -->
-      <span class="section-tag">Prospección B2B automatizada</span>
+      <!-- Badge -->
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span>Sistema comercial con IA · Sprint 10–14 días</span>
+      </div>
 
-      <!-- Headline -->
-      <h1 class="text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-7xl">
-        Deja de buscar clientes.<br />
-        <span class="gradient-text">Tu agente lo hace por ti.</span>
+      <!-- H1 -->
+      <h1 class="text-4xl font-extrabold leading-[1.07] tracking-tight text-white sm:text-5xl lg:text-[4rem]">
+        Tu negocio pierde leads cada día
+        <span class="gradient-text"> porque no tiene sistema.</span>
       </h1>
 
       <!-- Subheadline -->
-      <p class="max-w-2xl text-base leading-relaxed text-offset sm:text-xl">
-        Implementamos un sistema de agente IA que detecta empresas con encaje real,
-        las analiza y envía el primer mensaje personalizado.
-        <strong class="text-white/70"> Tú solo cierras.</strong>
+      <p class="max-w-2xl text-base leading-relaxed text-offset sm:text-lg">
+        Instalamos agentes empresariales que responden, cualifican y agendan automáticamente.
+        En 10–14 días tienes el sistema funcionando. Tú solo apareces a cerrar.
       </p>
 
-      <!-- Diferenciador brutal -->
-      <div class="diferenciador">
-        <span class="text-offset/60 text-sm">No es una herramienta que aprendes.</span>
-        <span class="separador">·</span>
-        <span class="text-white/80 text-sm font-medium">Es un sistema que implementamos para ti.</span>
-      </div>
-
-      <!-- CTA -->
-      <div class="flex flex-col items-center gap-4 mt-2">
-        <a href="#cta" class="btn-primary text-base px-10 py-4">
-          Quiero ver cómo funciona en mi negocio
-        </a>
-        <p class="text-xs text-offset/50">
-          Llamada de 30 min · Sin compromiso · Respuesta en menos de 24h
-        </p>
-      </div>
-
-      <!-- Proof bar -->
-      <div class="proof-bar mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+      <!-- 3 bullets -->
+      <div class="bullets-grid">
         {[
-          "Agencias",
-          "Consultores",
-          "Negocios B2B",
-          "Autónomos con cartera",
-        ].map((label) => (
-          <div class="flex items-center gap-2">
-            <div class="h-1 w-1 rounded-full bg-white/20"></div>
-            <span class="text-xs text-offset/50">{label}</span>
+          "Seguimiento automático de todos tus leads sin depender de tu equipo",
+          "Citas agendadas sin intervención manual desde WhatsApp o tu web",
+          "Registro y control de todo en un panel claro — sin hojas de cálculo",
+        ].map((b) => (
+          <div class="bullet-item">
+            <div class="bullet-check">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="text-sm text-white/70">{b}</span>
           </div>
         ))}
       </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col items-center gap-4 mt-2 w-full sm:flex-row sm:justify-center">
+        <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="cta-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          Escríbeme 'SISTEMA' por DM
+        </a>
+        <a href="#demos" class="cta-secondary">
+          Ver demo
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M5 12l7 7 7-7" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <p class="text-xs text-offset/40">Sin compromiso · Respondo en menos de 24h</p>
     </div>
   </div>
 
@@ -79,37 +84,96 @@ import Starfield from "~/components/starfield.astro";
 </section>
 
 <style>
-  .diferenciador {
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 1rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.5);
+    letter-spacing: 0.01em;
+  }
+
+  .badge-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 1; }
+  }
+
+  .bullets-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-width: 36rem;
+    text-align: left;
+  }
+
+  .bullet-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .bullet-check {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    padding: 0.5rem 1.25rem;
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 100px;
-    flex-wrap: wrap;
     justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+    color: rgba(255, 255, 255, 0.6);
   }
 
-  .separador {
-    color: rgba(255, 255, 255, 0.2);
-  }
-
-  .btn-primary {
+  .cta-primary {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     background: #fff;
     color: #0b0b0b;
     font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.875rem 1.75rem;
     border-radius: 8px;
     text-decoration: none;
     transition: opacity 0.2s ease, transform 0.2s ease;
     white-space: nowrap;
   }
 
-  .btn-primary:hover {
-    opacity: 0.9;
+  .cta-primary:hover {
+    opacity: 0.92;
     transform: translateY(-1px);
+  }
+
+  .cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.875rem 1rem;
+    transition: color 0.2s ease;
+  }
+
+  .cta-secondary:hover {
+    color: rgba(255, 255, 255, 0.85);
   }
 </style>

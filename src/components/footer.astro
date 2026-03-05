@@ -1,82 +1,134 @@
 ---
+const IG_URL = "https://www.instagram.com/nazbot.es/";
+const TIKTOK_URL = "https://www.tiktok.com/@nazbot.es";
+const LINKEDIN_URL = "https://www.linkedin.com/company/nazbot";
+const EMAIL = "hola@nazbot.es";
 ---
 
-<footer class="relative border-t border-white/[0.06] bg-[#0b0b0b] pt-12 pb-8">
+<footer class="relative border-t border-white/[0.06] bg-[#0b0b0b] pt-14 pb-8">
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
 
-    <!-- Top row: brand + nav -->
-    <div class="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center">
+    <!-- Top: brand + nav + social -->
+    <div class="flex flex-col gap-8 lg:flex-row lg:items-start lg:justify-between">
+
       <!-- Brand -->
-      <div class="flex items-center gap-2">
-        <div class="flex h-7 w-7 items-center justify-center rounded-md border border-white/15 bg-white/5">
-          <span class="text-xs font-bold tracking-widest text-white">NB</span>
+      <div class="flex flex-col gap-4">
+        <div class="flex items-center gap-2">
+          <div class="flex h-8 w-8 items-center justify-center rounded-md border border-white/15 bg-white/5">
+            <span class="text-xs font-bold tracking-widest text-white">NB</span>
+          </div>
+          <span class="text-sm font-bold tracking-tight text-white">NAZBOT</span>
         </div>
-        <span class="text-sm font-semibold text-white/70">NazBot</span>
+        <p class="text-xs leading-relaxed text-offset/50 max-w-xs">
+          Sistema comercial con IA. Respuesta automática, cualificación y seguimiento.
+          Sprint 10–14 días.
+        </p>
+        <!-- Social -->
+        <div class="flex items-center gap-3 mt-1">
+          <a href={IG_URL} target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <a href={TIKTOK_URL} target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.76a4.85 4.85 0 0 1-1.01-.07z"/>
+            </svg>
+          </a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>
+            </svg>
+          </a>
+          <a href={`mailto:${EMAIL}`} aria-label="Email" class="social-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <!-- Nav links -->
-      <nav>
-        <ul class="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <li>
-            <a href="#que-hacemos" class="text-xs text-offset hover:text-white transition-colors">
-              Qué hacemos
-            </a>
-          </li>
-          <li>
-            <a href="#como-funciona" class="text-xs text-offset hover:text-white transition-colors">
-              El proceso
-            </a>
-          </li>
-          <li>
-            <a href="#para-quien" class="text-xs text-offset hover:text-white transition-colors">
-              Para quién
-            </a>
-          </li>
-          <li>
-            <a href="#cta" class="text-xs text-offset hover:text-white transition-colors">
-              Contacto
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <!-- Nav -->
+      <div class="grid grid-cols-2 gap-x-16 gap-y-3 sm:flex sm:gap-16">
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-white/20">Página</p>
+          <ul class="flex flex-col gap-2.5">
+            {[
+              { label: "La solución", url: "#solucion" },
+              { label: "Demos", url: "#demos" },
+              { label: "Qué incluye", url: "#incluye" },
+              { label: "Precio", url: "#precios" },
+              { label: "Proceso", url: "#proceso" },
+              { label: "FAQ", url: "#faq" },
+            ].map(({ label, url }) => (
+              <li>
+                <a href={url} class="text-xs text-offset/55 hover:text-white transition-colors">
+                  {label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div>
+          <p class="mb-3 text-xs font-semibold uppercase tracking-widest text-white/20">Contacto</p>
+          <ul class="flex flex-col gap-2.5">
+            <li>
+              <a href={IG_URL} target="_blank" rel="noopener noreferrer" class="text-xs text-offset/55 hover:text-white transition-colors">
+                DM 'SISTEMA' en IG
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${EMAIL}`} class="text-xs text-offset/55 hover:text-white transition-colors">
+                {EMAIL}
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <!-- Divider -->
-    <div class="my-6 h-px bg-white/[0.06]"></div>
+    <div class="my-8 h-px bg-white/[0.05]"></div>
 
-    <!-- Bottom row: legal links + copyright -->
+    <!-- Bottom -->
     <div class="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
-      <!-- Legal links -->
       <nav>
         <ul class="flex flex-wrap items-center gap-x-5 gap-y-2">
-          <li>
-            <a href="/aviso-legal" class="text-xs text-offset/60 hover:text-white/70 transition-colors">
-              Aviso Legal
-            </a>
-          </li>
-          <li>
-            <a href="/privacidad" class="text-xs text-offset/60 hover:text-white/70 transition-colors">
-              Política de Privacidad
-            </a>
-          </li>
-          <li>
-            <a href="/cookies" class="text-xs text-offset/60 hover:text-white/70 transition-colors">
-              Política de Cookies
-            </a>
-          </li>
-          <li>
-            <a href="/terminos" class="text-xs text-offset/60 hover:text-white/70 transition-colors">
-              Términos y Condiciones
-            </a>
-          </li>
+          <li><a href="/aviso-legal" class="text-xs text-offset/40 hover:text-white/60 transition-colors">Aviso Legal</a></li>
+          <li><a href="/privacidad" class="text-xs text-offset/40 hover:text-white/60 transition-colors">Privacidad</a></li>
+          <li><a href="/cookies" class="text-xs text-offset/40 hover:text-white/60 transition-colors">Cookies</a></li>
+          <li><a href="/terminos" class="text-xs text-offset/40 hover:text-white/60 transition-colors">Términos</a></li>
         </ul>
       </nav>
-
-      <!-- Copyright -->
-      <p class="text-xs text-offset/40">
-        © {new Date().getFullYear()} NazBot. Todos los derechos reservados.
+      <p class="text-xs text-offset/30">
+        © {new Date().getFullYear()} NAZBOT. Todos los derechos reservados.
       </p>
     </div>
 
   </div>
 </footer>
+
+<style>
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.45);
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .social-icon:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.14);
+    color: rgba(255, 255, 255, 0.8);
+  }
+</style>

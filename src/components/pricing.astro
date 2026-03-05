@@ -1,0 +1,233 @@
+---
+const IG_URL = "https://www.instagram.com/nazbot.es/";
+
+const planes = [
+  {
+    nombre: "CORE",
+    precio: "2.000€",
+    tagline: "El sistema completo para negocios que quieren empezar ya.",
+    features: [
+      "WhatsApp Business con respuesta automática",
+      "Webchat en tu web",
+      "Integración con tu agenda",
+      "Panel de control centralizado",
+      "Flujo de cualificación básico (hasta 5 preguntas)",
+      "Seguimiento automático (2/semana · 14 días)",
+      "1 semana de estabilización",
+      "Vídeo Loom + diagrama",
+      "Garantía 15 días",
+    ],
+    destacado: false,
+  },
+  {
+    nombre: "PRO",
+    precio: "2.500€",
+    tagline: "Para negocios con mayor volumen o flujos más complejos.",
+    features: [
+      "Todo lo de CORE",
+      "Flujo de cualificación avanzado (sin límite de preguntas)",
+      "Segmentación por tipo de lead o servicio",
+      "Integración con CRM o herramienta de gestión existente",
+      "Mensajes de seguimiento personalizados por segmento",
+      "Panel avanzado con etiquetas y filtros",
+      "2 semanas de estabilización",
+      "Soporte prioritario durante el sprint",
+    ],
+    destacado: true,
+  },
+];
+---
+
+<section id="precios" class="section-py relative bg-[#0b0b0b]">
+  <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+
+  <div class="mx-auto max-w-5xl px-6 lg:px-12">
+
+    <div class="mb-16 text-center reveal">
+      <span class="section-tag">Precio</span>
+      <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        Un pago. Un sprint.
+        <span class="gradient-text"> Sistema funcionando.</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-lg text-base leading-relaxed text-offset">
+        Sin cuotas mensuales obligatorias. Pagas 50% al inicio y 50% cuando
+        el sistema está funcionando y estabilizado.
+      </p>
+    </div>
+
+    <!-- Tabla planes -->
+    <div class="grid gap-5 lg:grid-cols-2 reveal">
+      {planes.map((plan) => (
+        <div class={`plan-card ${plan.destacado ? "plan-destacado" : ""}`}>
+
+          {plan.destacado && (
+            <div class="plan-popular">Más elegido</div>
+          )}
+
+          <div class="plan-header">
+            <span class="plan-nombre">{plan.nombre}</span>
+            <div class="plan-precio">{plan.precio}</div>
+            <p class="plan-tagline">{plan.tagline}</p>
+          </div>
+
+          <div class="plan-features">
+            {plan.features.map((f) => (
+              <div class="plan-feature">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0 mt-0.5 text-white/35" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="text-sm text-white/65">{f}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="plan-cta">
+            <a href={IG_URL} target="_blank" rel="noopener noreferrer" class={`plan-btn ${plan.destacado ? "plan-btn-primary" : "plan-btn-secondary"}`}>
+              Escríbeme 'SISTEMA' por DM
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Nota pago -->
+    <div class="mt-8 text-center reveal">
+      <p class="text-sm text-offset/50">
+        Pago: <strong class="text-white/60">50% al inicio · 50% cuando el sistema funciona</strong>
+        &nbsp;·&nbsp; Transferencia o Bizum
+      </p>
+    </div>
+
+    <!-- Diagnóstico -->
+    <div class="diagnostico-nota mt-8 reveal">
+      <p class="text-sm text-offset/50">
+        <strong class="text-white/50">¿Tu caso es complejo o no tienes claro si encaja?</strong>
+        &nbsp;Puedo hacer un diagnóstico previo por 250€ que se descuenta si contratas el sprint.
+        Cuéntamelo por DM.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .section-py {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .plan-card {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease;
+  }
+
+  .plan-card:hover {
+    border-color: rgba(255, 255, 255, 0.14);
+  }
+
+  .plan-destacado {
+    border-color: rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.035);
+  }
+
+  .plan-popular {
+    background: rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.55);
+    padding: 0.45rem;
+  }
+
+  .plan-header {
+    padding: 1.75rem 1.75rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .plan-nombre {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.35);
+  }
+
+  .plan-precio {
+    font-size: 2.75rem;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.1;
+    margin: 0.5rem 0 0.75rem;
+  }
+
+  .plan-tagline {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    line-height: 1.4;
+  }
+
+  .plan-features {
+    padding: 1.5rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .plan-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+
+  .plan-cta {
+    padding: 1.25rem 1.75rem 1.75rem;
+  }
+
+  .plan-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.875rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .plan-btn:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  .plan-btn-primary {
+    background: #fff;
+    color: #0b0b0b;
+  }
+
+  .plan-btn-secondary {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .diagnostico-nota {
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 10px;
+    text-align: center;
+  }
+</style>

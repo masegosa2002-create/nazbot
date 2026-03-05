@@ -4,16 +4,18 @@ import Header from "~/components/header.astro";
 import Hero from "~/components/hero.astro";
 import Problema from "~/components/problema.astro";
 import Solucion from "~/components/solucion.astro";
-import ComoFunciona from "~/components/como-funciona.astro";
-import Beneficios from "~/components/beneficios.astro";
-import ParaQuien from "~/components/para-quien.astro";
+import Demos from "~/components/demos.astro";
+import Incluye from "~/components/incluye.astro";
+import Pricing from "~/components/pricing.astro";
+import Proceso from "~/components/proceso.astro";
+import Faq from "~/components/faq.astro";
 import CtaSection from "~/components/cta-section.astro";
 import Footer from "~/components/footer.astro";
 import "~/styles/index.css";
 
-const title = "NazBot — Tu agente de prospección B2B";
+const title = "NAZBOT — Sistema comercial con IA | Leads, seguimiento y citas automáticas";
 const description =
-  "NazBot implementa un agente IA que detecta empresas con encaje, las analiza y envía el primer mensaje personalizado. Tú solo cierras. Sin herramientas que aprender.";
+  "Instalamos un sistema comercial con agentes empresariales que responde, cualifica y agenda por ti. Sprint de 10–14 días. WhatsApp + webchat + agenda + panel de control.";
 const siteUrl = "https://nazbot.space";
 ---
 
@@ -29,7 +31,7 @@ const siteUrl = "https://nazbot.space";
     <meta name="description" content={description} />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="NazBot — Tu agente de prospección B2B" />
+    <meta property="og:title" content="NAZBOT — Sistema comercial con IA" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={siteUrl} />
@@ -45,9 +47,11 @@ const siteUrl = "https://nazbot.space";
       <Hero />
       <Problema />
       <Solucion />
-      <ComoFunciona />
-      <Beneficios />
-      <ParaQuien />
+      <Demos />
+      <Incluye />
+      <Pricing />
+      <Proceso />
+      <Faq />
       <CtaSection />
     </main>
     <Footer />

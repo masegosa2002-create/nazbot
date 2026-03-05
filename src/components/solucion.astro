@@ -1,80 +1,94 @@
 ---
-const diferencias = [
+const flujo = [
+  { label: "Captación", desc: "Lead entra por WhatsApp, web o anuncio" },
+  { label: "Respuesta", desc: "El sistema responde en segundos" },
+  { label: "Cualificación", desc: "Preguntas automáticas para filtrar intención" },
+  { label: "Cita", desc: "Agenda directamente en tu calendario" },
+  { label: "Seguimiento", desc: "Hasta 4 intentos si no responde" },
+  { label: "Cierre", desc: "Tú entras con el lead ya preparado" },
+];
+
+const canales = [
   {
-    ellos: "Herramientas que configuras tú",
-    nosotros: "Sistema que implementamos nosotros",
+    icon: "💬",
+    nombre: "WhatsApp Business",
+    desc: "El canal donde ya están tus clientes. Respuesta y seguimiento automático.",
   },
   {
-    ellos: "Curva de aprendizaje de semanas",
-    nosotros: "Funcionando en 72 horas",
+    icon: "🌐",
+    nombre: "Webchat",
+    desc: "El chat de tu web convierte visitas en conversaciones cualificadas.",
   },
   {
-    ellos: "Tú decides qué hacer con los datos",
-    nosotros: "El agente actúa y tú apruebas",
+    icon: "📅",
+    nombre: "Agenda",
+    desc: "Integración con tu calendario. Las citas se bloquean solas.",
   },
   {
-    ellos: "SaaS mensual que no para de cobrar",
-    nosotros: "Sistema tuyo, sin dependencias de por vida",
+    icon: "📊",
+    nombre: "Panel de control",
+    desc: "Todos los leads, estados y conversaciones en un sitio. Sin Excel.",
   },
 ];
 ---
 
-<section id="que-hacemos" class="section-py relative bg-[#0d0d0d]">
+<section id="solucion" class="section-py relative bg-[#0d0d0d]">
   <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
 
   <div class="mx-auto max-w-6xl px-6 lg:px-12">
 
-    <div class="grid gap-16 lg:grid-cols-2 lg:gap-24 items-center">
+    <!-- Header -->
+    <div class="mb-16 text-center reveal">
+      <span class="section-tag">La solución</span>
+      <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
+        Un sistema que trabaja
+        <span class="gradient-text"> desde el primer contacto hasta la cita.</span>
+      </h2>
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
+        Lo instalamos en 10–14 días. A partir de ahí, funciona solo.
+        Tú ves los resultados en el panel.
+      </p>
+    </div>
 
-      <!-- Left: Texto -->
-      <div class="reveal">
-        <span class="section-tag">Qué hacemos</span>
-        <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-          No vendemos una herramienta.
-          <span class="gradient-text"> Implementamos tu sistema.</span>
-        </h2>
-        <p class="mt-6 text-base leading-relaxed text-offset">
-          NazBot es un servicio, no un SaaS. Te construimos un agente de prospección
-          configurado específicamente para tu negocio: a quién vendes, en qué sector
-          y con qué mensaje.
-        </p>
-        <p class="mt-4 text-base leading-relaxed text-offset">
-          El agente trabaja todos los días: busca empresas, las analiza,
-          les escribe y registra todo. Tú tienes un panel donde ves en segundos
-          quién está caliente y qué tienes que hacer hoy.
-        </p>
-
-        <a href="#cta" class="btn-primary mt-8 inline-flex px-8 py-3.5">
-          Cuéntame tu caso
-        </a>
-      </div>
-
-      <!-- Right: Tabla diferenciadora -->
-      <div class="reveal delay-100">
-        <div class="tabla-dif">
-          <div class="tabla-header">
-            <span class="text-xs font-semibold text-offset/50 uppercase tracking-wider">Herramientas típicas</span>
-            <span class="text-xs font-semibold text-white/70 uppercase tracking-wider">NazBot</span>
+    <!-- Flujo visual -->
+    <div class="flujo-container mb-20 reveal">
+      <div class="flujo-title">El recorrido de cada lead</div>
+      <div class="flujo-pasos">
+        {flujo.map((paso, i) => (
+          <div class="flujo-paso">
+            <div class="flujo-num">{String(i + 1).padStart(2, "0")}</div>
+            <div class="flujo-label">{paso.label}</div>
+            <div class="flujo-desc">{paso.desc}</div>
+            {i < flujo.length - 1 && (
+              <div class="flujo-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+            )}
           </div>
-          {diferencias.map((d) => (
-            <div class="tabla-row">
-              <div class="col-ellos">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0 mt-0.5 text-white/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M18 6L6 18M6 6l12 12" stroke-linecap="round"/>
-                </svg>
-                <span class="text-sm text-offset/50">{d.ellos}</span>
-              </div>
-              <div class="col-nosotros">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0 mt-0.5 text-white/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                  <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span class="text-sm text-white/80 font-medium">{d.nosotros}</span>
-              </div>
-            </div>
-          ))}
-        </div>
+        ))}
       </div>
     </div>
+
+    <!-- Canales -->
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 reveal">
+      {canales.map((c, i) => (
+        <div class={`canal-card reveal delay-${(i + 1) * 100}`}>
+          <div class="canal-icon">{c.icon}</div>
+          <h3 class="mt-3 text-sm font-semibold text-white">{c.nombre}</h3>
+          <p class="mt-2 text-xs leading-relaxed text-offset">{c.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Nota -->
+    <div class="mt-10 text-center reveal">
+      <p class="text-sm text-offset/50">
+        El sistema no impone herramientas. Se adapta a tu agenda actual y lo integramos todo.
+      </p>
+    </div>
+
   </div>
 </section>
 
@@ -84,56 +98,79 @@ const diferencias = [
     padding-bottom: 7rem;
   }
 
-  .tabla-dif {
+  .flujo-container {
     background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.07);
     border-radius: 14px;
-    overflow: hidden;
+    padding: 2rem;
+    overflow-x: auto;
   }
 
-  .tabla-header {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    background: rgba(255, 255, 255, 0.02);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  .flujo-title {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.25);
+    margin-bottom: 1.5rem;
   }
 
-  .tabla-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 1rem 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-    align-items: start;
-  }
-
-  .tabla-row:last-child {
-    border-bottom: none;
-  }
-
-  .col-ellos,
-  .col-nosotros {
+  .flujo-pasos {
     display: flex;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0;
+    min-width: 640px;
   }
 
-  .btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    color: #0b0b0b;
+  .flujo-paso {
+    position: relative;
+    flex: 1;
+    padding-right: 1.5rem;
+  }
+
+  .flujo-num {
+    font-size: 0.65rem;
     font-weight: 700;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: opacity 0.2s ease, transform 0.2s ease;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.2);
+    margin-bottom: 0.5rem;
   }
 
-  .btn-primary:hover {
-    opacity: 0.9;
-    transform: translateY(-1px);
+  .flujo-label {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 0.375rem;
+  }
+
+  .flujo-desc {
+    font-size: 0.72rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.4);
+  }
+
+  .flujo-arrow {
+    position: absolute;
+    right: -0.25rem;
+    top: 1.4rem;
+    color: rgba(255, 255, 255, 0.15);
+  }
+
+  .canal-card {
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 0.2s ease, background 0.2s ease;
+  }
+
+  .canal-card:hover {
+    border-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .canal-icon {
+    font-size: 1.5rem;
+    line-height: 1;
   }
 </style>
