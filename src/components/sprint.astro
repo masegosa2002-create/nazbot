@@ -3,38 +3,46 @@ const bloques = [
   {
     num: "01",
     title: "Captación y respuesta",
+    desc: "El lead entra por cualquier canal y recibe respuesta en segundos, antes de que enfríe.",
     items: [
       "WhatsApp Business con respuesta automática",
       "Webchat instalado en tu web",
       "Todos los canales conectados en un mismo flujo",
     ],
+    svgPath: `<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>`,
   },
   {
     num: "02",
     title: "Clasificación y avance",
+    desc: "El sistema filtra quién es un lead real, qué quiere y cuándo está listo para comprar.",
     items: [
       "Preguntas automáticas de cualificación",
       "Filtrado de leads por intención y urgencia",
-      "Agendado directo o paso a venta según el perfil",
+      "Agendado directo según el perfil del lead",
     ],
+    svgPath: `<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>`,
   },
   {
     num: "03",
-    title: "Seguimiento",
+    title: "Seguimiento automático",
+    desc: "El sistema contacta hasta 4 veces sin que tú hagas nada. Ningún lead se pierde por silencio.",
     items: [
-      "Recordatorios automáticos",
+      "Recordatorios automáticos en el momento justo",
       "Recontacto si no responde (hasta 4 intentos)",
       "Seguimiento activo hasta cierre o descarte",
     ],
+    svgPath: `<polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>`,
   },
   {
     num: "04",
-    title: "Control",
+    title: "Control y visibilidad",
+    desc: "Panel centralizado donde ves el estado de cada lead en tiempo real. Sin hojas de cálculo.",
     items: [
       "Panel central con todos los leads",
       "Estado actualizado de cada oportunidad",
       "Visibilidad total del proceso comercial",
     ],
+    svgPath: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>`,
   },
 ];
 ---
@@ -42,68 +50,265 @@ const bloques = [
 <section id="sprint" class="section-py relative bg-[#0b0b0b]">
   <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/8 to-transparent"></div>
 
-  <div class="mx-auto max-w-6xl px-6 lg:px-12">
-    <div class="mb-16 text-center reveal">
+  <div class="mx-auto max-w-4xl px-6 lg:px-12">
+    <div class="mb-14 text-center reveal">
       <span class="section-tag">El sprint</span>
       <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
         Qué queda montado
         <span class="gradient-text"> dentro del sprint</span>
       </h2>
       <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/50">
-        En 10–14 días tienes el sistema funcionando.
-        Entrega con Loom + diagrama explicativo + semana de estabilización.
+        En 10–14 días tienes el sistema funcionando con diagrama explicativo y semana de estabilización incluida.
       </p>
     </div>
 
-    <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-      {bloques.map((b, i) => (
-        <div class={`sprint-card reveal delay-${(i + 1) * 100}`}>
-          <div class="sprint-num">{b.num}</div>
-          <h3 class="sprint-title">{b.title}</h3>
-          <ul class="sprint-items">
-            {b.items.map((item) => (
-              <li class="sprint-item">
-                <span class="item-dot"></span>
-                <span class="text-sm text-white/55">{item}</span>
-              </li>
-            ))}
-          </ul>
+    <!-- Slider -->
+    <div class="sprint-slider reveal">
+
+      <!-- Step indicators -->
+      <div class="steps-row">
+        {bloques.map((b, i) => (
+          <button class={`step-btn ${i === 0 ? "active" : ""}`} data-step={i} aria-label={b.title}>
+            <span class="step-num">{b.num}</span>
+            <span class="step-label">{b.title}</span>
+          </button>
+        ))}
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-track">
+        <div class="progress-bar" id="sprint-progress"></div>
+      </div>
+
+      <!-- Slide content -->
+      <div class="slides-wrap">
+        {bloques.map((b, i) => (
+          <div class={`slide ${i === 0 ? "slide-active" : ""}`} data-slide={i}>
+            <div class="slide-inner">
+              <!-- Icon -->
+              <div class="slide-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" set:html={b.svgPath}></svg>
+              </div>
+              <!-- Text -->
+              <div class="slide-content">
+                <p class="slide-num">{b.num}</p>
+                <h3 class="slide-title">{b.title}</h3>
+                <p class="slide-desc">{b.desc}</p>
+                <ul class="slide-items">
+                  {b.items.map((item) => (
+                    <li class="slide-item">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color:#4F9EFF">
+                        <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                      <span class="text-sm text-white/65">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Nav arrows -->
+      <div class="nav-row">
+        <button id="sprint-prev" class="nav-btn" aria-label="Anterior">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div class="dots-row">
+          {bloques.map((_, i) => (
+            <button class={`dot ${i === 0 ? "dot-active" : ""}`} data-dot={i} aria-label={`Slide ${i + 1}`}></button>
+          ))}
         </div>
-      ))}
+        <button id="sprint-next" class="nav-btn" aria-label="Siguiente">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M9 18l6-6-6-6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
-    <div class="mt-10 entrega-nota reveal">
+    <!-- Entrega -->
+    <div class="entrega-nota mt-10 reveal">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#4F9EFF">
         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       </svg>
       <p class="text-sm text-white/50">
-        <strong class="text-white/70">Entrega incluida:</strong> Sistema funcionando + vídeo Loom explicativo + diagrama del flujo + 1 semana de estabilización + garantía 15 días.
+        <strong class="text-white/70">Entrega incluida:</strong> Sistema funcionando + diagrama del flujo + 1 semana de estabilización + garantía 15 días.
       </p>
     </div>
   </div>
 </section>
 
+<script>
+  const INTERVAL = 4000;
+  let current = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  const slides = document.querySelectorAll<HTMLElement>(".slide");
+  const stepBtns = document.querySelectorAll<HTMLButtonElement>(".step-btn");
+  const dots = document.querySelectorAll<HTMLButtonElement>(".dot");
+  const progress = document.getElementById("sprint-progress");
+  const prevBtn = document.getElementById("sprint-prev");
+  const nextBtn = document.getElementById("sprint-next");
+
+  function goTo(idx: number) {
+    slides[current].classList.remove("slide-active");
+    slides[current].classList.add("slide-out");
+    stepBtns[current].classList.remove("active");
+    dots[current].classList.remove("dot-active");
+
+    current = (idx + slides.length) % slides.length;
+
+    slides[current].classList.add("slide-active");
+    slides[current].classList.remove("slide-out");
+    stepBtns[current].classList.add("active");
+    dots[current].classList.add("dot-active");
+
+    resetProgress();
+  }
+
+  function resetProgress() {
+    if (!progress) return;
+    progress.style.transition = "none";
+    progress.style.width = "0%";
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        progress.style.transition = `width ${INTERVAL}ms linear`;
+        progress.style.width = "100%";
+      });
+    });
+  }
+
+  function startTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), INTERVAL);
+  }
+
+  function pauseAndResume() {
+    clearInterval(timer);
+    resetProgress();
+    startTimer();
+  }
+
+  stepBtns.forEach((btn, i) => {
+    btn.addEventListener("click", () => { goTo(i); pauseAndResume(); });
+  });
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => { goTo(i); pauseAndResume(); });
+  });
+  prevBtn?.addEventListener("click", () => { goTo(current - 1); pauseAndResume(); });
+  nextBtn?.addEventListener("click", () => { goTo(current + 1); pauseAndResume(); });
+
+  resetProgress();
+  startTimer();
+</script>
+
 <style>
   .section-py { padding-top: 7rem; padding-bottom: 7rem; }
-  .sprint-card {
+
+  .sprint-slider {
     background: rgba(255,255,255,0.02);
     border: 1px solid rgba(255,255,255,0.07);
-    border-radius: 14px; padding: 1.75rem;
-    display: flex; flex-direction: column; gap: 1rem;
-    transition: border-color 0.2s ease;
+    border-radius: 18px;
+    overflow: hidden;
   }
-  .sprint-card:hover { border-color: rgba(79,158,255,0.18); }
-  .sprint-num {
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em;
-    color: rgba(79,158,255,0.5);
+
+  /* Steps */
+  .steps-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
-  .sprint-title { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,0.85); }
-  .sprint-items { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
-  .sprint-item { display: flex; align-items: flex-start; gap: 0.5rem; }
-  .item-dot {
-    width: 5px; height: 5px; border-radius: 50%;
-    background: rgba(79,158,255,0.4); margin-top: 0.45rem; flex-shrink: 0;
+  .step-btn {
+    display: flex; flex-direction: column; align-items: flex-start;
+    gap: 0.25rem; padding: 1.25rem 1.5rem;
+    background: none; border: none; border-right: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer; text-align: left; transition: background 0.2s ease;
   }
+  .step-btn:last-child { border-right: none; }
+  .step-btn:hover { background: rgba(255,255,255,0.025); }
+  .step-btn.active { background: rgba(79,158,255,0.05); border-bottom: 2px solid #4F9EFF; margin-bottom: -1px; }
+  .step-num {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em;
+    color: rgba(79,158,255,0.45); transition: color 0.2s;
+  }
+  .step-btn.active .step-num { color: rgba(79,158,255,0.8); }
+  .step-label {
+    font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.35);
+    line-height: 1.3; transition: color 0.2s;
+    display: none;
+  }
+  @media (min-width: 640px) { .step-label { display: block; } }
+  .step-btn.active .step-label { color: rgba(255,255,255,0.8); }
+
+  /* Progress */
+  .progress-track {
+    height: 2px; background: rgba(255,255,255,0.04);
+  }
+  .progress-bar {
+    height: 100%; width: 0%; background: #4F9EFF;
+    transition: width 4s linear;
+  }
+
+  /* Slides */
+  .slides-wrap { position: relative; min-height: 280px; }
+  .slide {
+    position: absolute; inset: 0;
+    opacity: 0; transform: translateX(24px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+  }
+  .slide.slide-active {
+    opacity: 1; transform: translateX(0);
+    pointer-events: auto; position: relative;
+  }
+  .slide.slide-out {
+    opacity: 0; transform: translateX(-24px);
+  }
+  .slide-inner {
+    display: flex; align-items: flex-start; gap: 2rem;
+    padding: 2.5rem;
+  }
+  .slide-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 52px; height: 52px; flex-shrink: 0;
+    background: rgba(79,158,255,0.07);
+    border: 1px solid rgba(79,158,255,0.18);
+    border-radius: 14px; color: #4F9EFF;
+  }
+  .slide-content { flex: 1; }
+  .slide-num { font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(79,158,255,0.5); margin-bottom: 0.5rem; }
+  .slide-title { font-size: 1.35rem; font-weight: 800; color: rgba(255,255,255,0.9); margin-bottom: 0.5rem; }
+  .slide-desc { font-size: 0.875rem; color: rgba(255,255,255,0.45); line-height: 1.6; margin-bottom: 1.25rem; }
+  .slide-items { list-style: none; display: flex; flex-direction: column; gap: 0.625rem; }
+  .slide-item { display: flex; align-items: flex-start; gap: 0.625rem; }
+
+  /* Nav */
+  .nav-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .nav-btn {
+    display: flex; align-items: center; justify-content: center;
+    width: 34px; height: 34px; border-radius: 8px;
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.5); cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .nav-btn:hover { background: rgba(255,255,255,0.08); color: white; }
+  .dots-row { display: flex; gap: 0.5rem; align-items: center; }
+  .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.15); border: none; cursor: pointer;
+    transition: background 0.2s, width 0.2s;
+  }
+  .dot.dot-active { background: #4F9EFF; width: 20px; border-radius: 3px; }
+
+  /* Entrega */
   .entrega-nota {
     display: flex; align-items: flex-start; gap: 0.75rem;
     padding: 1.25rem 1.5rem;
