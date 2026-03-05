@@ -1,24 +1,24 @@
 ---
 const dolores = [
   {
-    icon: "⏱️",
-    title: "Respondes tarde",
-    desc: "Los leads se enfrían. Cuando contestas horas después, el cliente ya habló con otro.",
+    title: "Llegas tarde",
+    desc: "El lead pregunta. Tú contestas horas después. Ya eligió a otro.",
+    svg: `<path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/>`,
   },
   {
-    icon: "📵",
-    title: "No haces seguimiento",
-    desc: "Se queda en 'luego les escribo'. Ese segundo mensaje nunca llega. La oportunidad se pierde.",
+    title: "El seguimiento no ocurre",
+    desc: "\"Luego les escribo\" es la frase que más ventas ha matado. Ese mensaje nunca llega.",
+    svg: `<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>`,
   },
   {
-    icon: "🗂️",
-    title: "Todo está disperso",
-    desc: "WhatsApp, formularios, agenda, notas del móvil. Nadie sabe en qué punto está cada lead.",
+    title: "Nadie sabe qué está pasando",
+    desc: "Los leads viven repartidos entre WhatsApp, formularios y notas de voz. Sin orden, sin control.",
+    svg: `<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>`,
   },
   {
-    icon: "😓",
-    title: "Tu equipo carga con todo",
-    desc: "Tareas repetitivas, poco control, mucho estrés. Y aún así siguen cayendo oportunidades.",
+    title: "Tu equipo apaga fuegos",
+    desc: "Responden lo urgente, olvidan lo importante. Con más volumen, el problema solo crece.",
+    svg: `<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>`,
   },
 ];
 ---
@@ -38,16 +38,20 @@ const dolores = [
     <div class="grid gap-4 sm:grid-cols-2 reveal">
       {dolores.map((d, i) => (
         <div class={`dolor-card reveal delay-${(i + 1) * 100}`}>
-          <div class="dolor-icon">{d.icon}</div>
-          <h3 class="mt-4 text-base font-semibold text-white">{d.title}</h3>
-          <p class="mt-2 text-sm leading-relaxed text-white/50">{d.desc}</p>
+          <div class="dolor-ico">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={d.svg}></svg>
+          </div>
+          <div>
+            <h3 class="dolor-title">{d.title}</h3>
+            <p class="mt-1.5 text-sm leading-relaxed text-white/45">{d.desc}</p>
+          </div>
         </div>
       ))}
     </div>
 
     <div class="mt-12 cierre-box reveal">
       <p class="text-sm leading-relaxed text-white/60">
-        Nazbot monta un sistema para que captar, responder y seguir
+        Nazbot monta el sistema para que captar, responder y seguir
         <strong class="text-white/80"> no dependa de la memoria ni del caos del día a día.</strong>
       </p>
     </div>
@@ -57,16 +61,27 @@ const dolores = [
 <style>
   .section-py { padding-top: 7rem; padding-bottom: 7rem; }
   .dolor-card {
+    display: flex; align-items: flex-start; gap: 1.25rem;
     background: rgba(255,255,255,0.02);
     border: 1px solid rgba(255,255,255,0.07);
     border-radius: 14px; padding: 1.75rem;
     transition: border-color 0.2s ease, background 0.2s ease;
   }
   .dolor-card:hover {
-    border-color: rgba(79,158,255,0.15);
+    border-color: rgba(79,158,255,0.14);
     background: rgba(79,158,255,0.02);
   }
-  .dolor-icon { font-size: 1.75rem; line-height: 1; }
+  .dolor-ico {
+    display: flex; align-items: center; justify-content: center;
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 9px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.35);
+  }
+  .dolor-title {
+    font-size: 0.95rem; font-weight: 700; color: rgba(255,255,255,0.85);
+  }
   .cierre-box {
     padding: 1.5rem 2rem;
     background: rgba(79,158,255,0.04);
