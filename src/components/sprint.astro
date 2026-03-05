@@ -75,11 +75,6 @@ const bloques = [
         ))}
       </div>
 
-      <!-- Progress bar -->
-      <div class="progress-track">
-        <div class="progress-bar" id="sprint-progress"></div>
-      </div>
-
       <!-- Slide content -->
       <div class="slides-wrap">
         {bloques.map((b, i) => (
@@ -130,27 +125,34 @@ const bloques = [
       </div>
     </div>
 
-    <!-- Entrega -->
-    <div class="entrega-nota mt-10 reveal">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#4F9EFF">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-      </svg>
-      <p class="text-sm text-white/50">
-        <strong class="text-white/70">Entrega incluida:</strong> Sistema funcionando + diagrama del flujo + 1 semana de estabilización + garantía 15 días.
-      </p>
+    <!-- Garantías -->
+    <div class="garantias-row mt-10 reveal">
+      {[
+        { label: "Sistema activo", sub: "Funciona desde el primer día", svg: `<path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>` },
+        { label: "Diagrama del flujo", sub: "Para ti y tu equipo", svg: `<rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>` },
+        { label: "1 semana de ajuste", sub: "Estabilización incluida", svg: `<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>` },
+        { label: "Garantía 15 días", sub: "Correcciones sin coste", svg: `<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>` },
+      ].map((g) => (
+        <div class="garantia-item">
+          <div class="garantia-ico">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" set:html={g.svg}></svg>
+          </div>
+          <div>
+            <p class="garantia-label">{g.label}</p>
+            <p class="garantia-sub">{g.sub}</p>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 <script>
-  const INTERVAL = 4000;
   let current = 0;
-  let timer: ReturnType<typeof setInterval>;
 
   const slides = document.querySelectorAll<HTMLElement>(".slide");
   const stepBtns = document.querySelectorAll<HTMLButtonElement>(".step-btn");
   const dots = document.querySelectorAll<HTMLButtonElement>(".dot");
-  const progress = document.getElementById("sprint-progress");
   const prevBtn = document.getElementById("sprint-prev");
   const nextBtn = document.getElementById("sprint-next");
 
@@ -166,44 +168,12 @@ const bloques = [
     slides[current].classList.remove("slide-out");
     stepBtns[current].classList.add("active");
     dots[current].classList.add("dot-active");
-
-    resetProgress();
   }
 
-  function resetProgress() {
-    if (!progress) return;
-    progress.style.transition = "none";
-    progress.style.width = "0%";
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => {
-        progress.style.transition = `width ${INTERVAL}ms linear`;
-        progress.style.width = "100%";
-      });
-    });
-  }
-
-  function startTimer() {
-    clearInterval(timer);
-    timer = setInterval(() => goTo(current + 1), INTERVAL);
-  }
-
-  function pauseAndResume() {
-    clearInterval(timer);
-    resetProgress();
-    startTimer();
-  }
-
-  stepBtns.forEach((btn, i) => {
-    btn.addEventListener("click", () => { goTo(i); pauseAndResume(); });
-  });
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => { goTo(i); pauseAndResume(); });
-  });
-  prevBtn?.addEventListener("click", () => { goTo(current - 1); pauseAndResume(); });
-  nextBtn?.addEventListener("click", () => { goTo(current + 1); pauseAndResume(); });
-
-  resetProgress();
-  startTimer();
+  stepBtns.forEach((btn, i) => btn.addEventListener("click", () => goTo(i)));
+  dots.forEach((dot, i) => dot.addEventListener("click", () => goTo(i)));
+  prevBtn?.addEventListener("click", () => goTo(current - 1));
+  nextBtn?.addEventListener("click", () => goTo(current + 1));
 </script>
 
 <style>
@@ -243,15 +213,6 @@ const bloques = [
   }
   @media (min-width: 640px) { .step-label { display: block; } }
   .step-btn.active .step-label { color: rgba(255,255,255,0.8); }
-
-  /* Progress */
-  .progress-track {
-    height: 2px; background: rgba(255,255,255,0.04);
-  }
-  .progress-bar {
-    height: 100%; width: 0%; background: #4F9EFF;
-    transition: width 4s linear;
-  }
 
   /* Slides */
   .slides-wrap { position: relative; min-height: 280px; }
@@ -308,12 +269,25 @@ const bloques = [
   }
   .dot.dot-active { background: #4F9EFF; width: 20px; border-radius: 3px; }
 
-  /* Entrega */
-  .entrega-nota {
-    display: flex; align-items: flex-start; gap: 0.75rem;
-    padding: 1.25rem 1.5rem;
-    background: rgba(79,158,255,0.04);
-    border: 1px solid rgba(79,158,255,0.12);
+  /* Garantías */
+  .garantias-row {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem;
+  }
+  @media (min-width: 640px) { .garantias-row { grid-template-columns: repeat(4, 1fr); } }
+  .garantia-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
     border-radius: 12px;
   }
+  .garantia-ico {
+    display: flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; flex-shrink: 0;
+    background: rgba(79,158,255,0.06);
+    border: 1px solid rgba(79,158,255,0.14);
+    border-radius: 8px; color: rgba(79,158,255,0.65);
+  }
+  .garantia-label { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.8); }
+  .garantia-sub { font-size: 0.65rem; color: rgba(255,255,255,0.3); margin-top: 0.1rem; }
 </style>
