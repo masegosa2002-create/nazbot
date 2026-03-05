@@ -6,20 +6,20 @@
 
   <!-- Ambient glow -->
   <div
-    class="pointer-events-none absolute left-1/2 top-0 h-96 w-96 -translate-x-1/2 rounded-full opacity-15"
-    style="background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);"
+    class="pointer-events-none absolute left-1/2 top-0 h-[500px] w-[700px] -translate-x-1/2 rounded-full opacity-10"
+    style="background: radial-gradient(ellipse, rgba(255,255,255,0.15) 0%, transparent 70%);"
   ></div>
 
-  <div class="relative mx-auto max-w-2xl px-6 text-center lg:px-12">
+  <div class="relative mx-auto max-w-3xl px-6 text-center lg:px-12">
     <div class="reveal">
-      <span class="section-tag">Gratis y sin compromisos</span>
+      <span class="section-tag">Empieza hoy</span>
       <h2 class="mt-4 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
-        Hablamos 30 minutos
-        <span class="gradient-text"> y te lo explico todo</span>
+        Una llamada de 30 minutos.
+        <span class="gradient-text"> Sin compromiso.</span>
       </h2>
-      <p class="mx-auto mt-4 max-w-lg text-base leading-relaxed text-offset">
+      <p class="mx-auto mt-4 max-w-xl text-base leading-relaxed text-offset">
         Me cuentas cómo buscas clientes ahora mismo y yo te digo si NazBot
-        tiene sentido para tu negocio. Sin tecnicismos, sin presión.
+        tiene sentido para tu negocio. Sin tecnicismos, sin presión, sin ventas agresivas.
       </p>
     </div>
 
@@ -53,46 +53,52 @@
           />
         </div>
         <div class="form-group sm:col-span-2">
-          <label for="tipo-negocio" class="form-label">Tipo de negocio</label>
+          <label for="tipo-negocio" class="form-label">¿A quién le vendes?</label>
           <select id="tipo-negocio" name="tipo" class="form-input" required>
             <option value="" disabled selected>Selecciona una opción</option>
-            <option value="autonomo">Autónomo / Freelance</option>
-            <option value="agencia">Agencia</option>
-            <option value="consultor">Consultor / Asesor</option>
-            <option value="b2b">Negocio B2B</option>
+            <option value="autonomo">Soy autónomo / freelance</option>
+            <option value="agencia">Llevo una agencia</option>
+            <option value="consultor">Soy consultor o asesor</option>
+            <option value="b2b">Empresa que vende a empresas</option>
             <option value="otro">Otro</option>
           </select>
         </div>
         <div class="form-group sm:col-span-2">
           <label for="mensaje" class="form-label">
-            Cuéntame brevemente tu situación
+            ¿Cómo buscas clientes ahora mismo?
           </label>
           <textarea
             id="mensaje"
             name="mensaje"
             class="form-input"
             rows="4"
-            placeholder="¿Cómo buscas clientes ahora? ¿Cuál es tu mayor problema?"
+            placeholder="Cuéntame brevemente tu situación actual. ¿Dónde está el cuello de botella?"
             required
           ></textarea>
         </div>
       </div>
 
       <div class="mt-6 flex flex-col items-center gap-4">
-        <button type="submit" class="btn-primary w-full justify-center sm:w-auto sm:px-12">
-          Quiero mi llamada gratuita
+        <button type="submit" class="btn-primary w-full justify-center text-base sm:w-auto sm:px-14 py-4">
+          Reservar llamada gratuita
         </button>
-        <p class="text-xs text-offset/50">
-          Sin spam. Sin presión. Solo te cuento si puedo ayudarte.
+        <p class="text-xs text-offset/40">
+          Respondo en menos de 24 horas. Sin spam.
         </p>
       </div>
     </form>
 
     <!-- Success message (hidden by default) -->
-    <div id="form-success" class="reveal mt-10 hidden text-center">
+    <div id="form-success" class="mt-10 hidden text-center">
       <div class="success-card mx-auto max-w-sm">
-        <div class="mb-3 text-3xl">✓</div>
-        <h3 class="text-lg font-bold text-white">¡Solicitud enviada!</h3>
+        <div class="mb-3 flex justify-center">
+          <div class="check-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-lg font-bold text-white">Solicitud enviada</h3>
         <p class="mt-2 text-sm text-offset">
           Te escribiré en menos de 24 horas para coordinar la llamada.
         </p>
@@ -103,6 +109,7 @@
 
 <script>
   const form = document.getElementById("lead-form") as HTMLFormElement;
+  const successDiv = document.getElementById("form-success");
 
   form?.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -118,11 +125,14 @@
       `*Nombre:* ${nombre}`,
       `*Email:* ${email}`,
       `*Tipo de negocio:* ${tipo}`,
-      `*Situación:* ${mensaje}`,
+      `*Situación actual:* ${mensaje}`,
     ].join("\n");
 
     const url = `https://wa.me/34659426999?text=${encodeURIComponent(texto)}`;
     window.open(url, "_blank");
+
+    form.style.display = "none";
+    if (successDiv) successDiv.classList.remove("hidden");
   });
 </script>
 
@@ -141,7 +151,7 @@
   .form-label {
     font-size: 0.8rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.55);
     letter-spacing: 0.01em;
   }
 
@@ -150,6 +160,16 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 12px;
     padding: 2rem;
-    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .check-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
 </style>

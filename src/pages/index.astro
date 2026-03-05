@@ -5,16 +5,15 @@ import Hero from "~/components/hero.astro";
 import Problema from "~/components/problema.astro";
 import Solucion from "~/components/solucion.astro";
 import ComoFunciona from "~/components/como-funciona.astro";
-import DashboardMockup from "~/components/dashboard-mockup.astro";
 import Beneficios from "~/components/beneficios.astro";
 import ParaQuien from "~/components/para-quien.astro";
 import CtaSection from "~/components/cta-section.astro";
 import Footer from "~/components/footer.astro";
 import "~/styles/index.css";
 
-const title = "Agente de Gestión de Oportunidades | Controla tu pipeline B2B";
+const title = "NazBot — Tu agente de prospección B2B";
 const description =
-  "Implemento un sistema con agente y dashboard que te permite detectar, priorizar y gestionar potenciales clientes con más criterio y menos carga manual.";
+  "NazBot implementa un agente IA que detecta empresas con encaje, las analiza y envía el primer mensaje personalizado. Tú solo cierras. Sin herramientas que aprender.";
 const siteUrl = "https://nazbot.space";
 ---
 
@@ -30,7 +29,7 @@ const siteUrl = "https://nazbot.space";
     <meta name="description" content={description} />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="Agente de Gestión de Oportunidades" />
+    <meta property="og:title" content="NazBot — Tu agente de prospección B2B" />
     <meta property="og:type" content="website" />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={siteUrl} />
@@ -47,7 +46,6 @@ const siteUrl = "https://nazbot.space";
       <Problema />
       <Solucion />
       <ComoFunciona />
-      <DashboardMockup />
       <Beneficios />
       <ParaQuien />
       <CtaSection />
