@@ -89,32 +89,42 @@ const WA_URL = "https://wa.me/34659426999?text=SISTEMA";
             ))}
           </div>
 
+          <!-- Table header -->
+          <div class="table-header">
+            <span class="th">Contacto</span>
+            <span class="th">Canal</span>
+            <span class="th">Estado</span>
+          </div>
+
           <div class="mockup-leads">
             {[
               { name: "Clínica Estética Sol", canal: "WhatsApp", estado: "Cita confirmada", type: "cita" },
-              { name: "Consultoría Avance", canal: "Webchat", estado: "En seguimiento", type: "seg" },
-              { name: "Reformas Vidal", canal: "Formulario", estado: "Cualificando", type: "cua" },
-              { name: "Talleres Moreno", canal: "WhatsApp", estado: "Nuevo lead", type: "new" },
+              { name: "Consultoría Avance",   canal: "Webchat",   estado: "Seguimiento",    type: "seg"  },
+              { name: "Reformas Vidal",        canal: "Formulario",estado: "Cualificando",   type: "cua"  },
+              { name: "Talleres Moreno",       canal: "WhatsApp",  estado: "Nuevo lead",     type: "new"  },
             ].map((lead) => (
               <div class="lead-row">
-                <div class="lead-av">{lead.name.charAt(0)}</div>
                 <div class="lead-info">
+                  <div class="lead-av">{lead.name.charAt(0)}</div>
                   <span class="lead-name">{lead.name}</span>
-                  <span class="lead-canal">{lead.canal}</span>
                 </div>
-                <span class={`lead-badge badge-${lead.type}`}>{lead.estado}</span>
+                <span class="lead-canal">{lead.canal}</span>
+                <div class={`estado-pill estado-${lead.type}`}>
+                  <span class="estado-dot"></span>
+                  {lead.estado}
+                </div>
               </div>
             ))}
           </div>
 
           <div class="mockup-accion">
             <div class="accion-ico">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#4F9EFF">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#4F9EFF">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
-            <p class="text-xs text-white/45">
-              Seguimiento enviado a <strong class="text-white/65">Consultoría Avance</strong> — 2.º intento automático
+            <p class="text-xs text-white/40">
+              <span class="text-white/60 font-medium">Acción automática</span> · Seguimiento 2.º intento → Consultoría Avance
             </p>
           </div>
         </div>
@@ -180,30 +190,44 @@ const WA_URL = "https://wa.me/34659426999?text=SISTEMA";
   }
   .stat-val { display: block; font-size: 1.35rem; font-weight: 800; color: rgba(255,255,255,0.9); line-height: 1; }
   .stat-label { display: block; font-size: 0.63rem; color: rgba(255,255,255,0.3); margin-top: 0.25rem; }
+  /* Table */
+  .table-header {
+    display: grid; grid-template-columns: 1fr auto auto;
+    gap: 0.5rem; align-items: center;
+    padding: 0.5rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .th { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
   .mockup-leads { display: flex; flex-direction: column; }
   .lead-row {
-    display: flex; align-items: center; gap: 0.75rem;
-    padding: 0.7rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: grid; grid-template-columns: 1fr auto auto;
+    gap: 0.75rem; align-items: center;
+    padding: 0.65rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,0.04);
     transition: background 0.15s;
   }
   .lead-row:hover { background: rgba(255,255,255,0.018); }
+  .lead-info { display: flex; align-items: center; gap: 0.625rem; min-width: 0; }
   .lead-av {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: rgba(79,158,255,0.08); border: 1px solid rgba(79,158,255,0.18);
+    width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+    background: rgba(79,158,255,0.07); border: 1px solid rgba(79,158,255,0.15);
     display: flex; align-items: center; justify-content: center;
-    font-size: 0.65rem; font-weight: 700; color: #4F9EFF; flex-shrink: 0;
+    font-size: 0.6rem; font-weight: 700; color: #4F9EFF;
   }
-  .lead-info { flex: 1; display: flex; flex-direction: column; gap: 0.1rem; }
-  .lead-name { font-size: 0.78rem; font-weight: 600; color: rgba(255,255,255,0.8); }
-  .lead-canal { font-size: 0.65rem; color: rgba(255,255,255,0.28); }
-  .lead-badge {
-    font-size: 0.63rem; font-weight: 600; padding: 0.18rem 0.5rem;
-    border-radius: 100px; border: 1px solid; white-space: nowrap;
+  .lead-name { font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.75); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .lead-canal { font-size: 0.65rem; color: rgba(255,255,255,0.28); white-space: nowrap; }
+  .estado-pill {
+    display: flex; align-items: center; gap: 0.35rem;
+    font-size: 0.63rem; font-weight: 500; white-space: nowrap;
+    color: rgba(255,255,255,0.45);
   }
-  .badge-cita { color: #4F9EFF; background: rgba(79,158,255,0.08); border-color: rgba(79,158,255,0.2); }
-  .badge-seg { color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.08); }
-  .badge-cua { color: rgba(255,255,255,0.35); background: transparent; border-color: rgba(255,255,255,0.07); }
-  .badge-new { color: rgba(79,158,255,0.5); background: rgba(79,158,255,0.04); border-color: rgba(79,158,255,0.1); }
+  .estado-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .estado-cita .estado-dot { background: #4F9EFF; }
+  .estado-cita { color: rgba(79,158,255,0.8); }
+  .estado-seg .estado-dot { background: rgba(255,189,68,0.7); }
+  .estado-seg { color: rgba(255,189,68,0.6); }
+  .estado-cua .estado-dot { background: rgba(255,255,255,0.25); }
+  .estado-new .estado-dot { background: rgba(40,200,64,0.6); }
+  .estado-new { color: rgba(40,200,64,0.65); }
   .mockup-accion {
     display: flex; align-items: center; gap: 0.625rem;
     padding: 0.875rem 1.25rem;
