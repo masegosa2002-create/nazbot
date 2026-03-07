@@ -5,7 +5,7 @@
 <script>
   import invariant from "tiny-invariant";
 
-  const COUNT = 800;
+  const COUNT = typeof window !== "undefined" && window.innerWidth < 640 ? 300 : 800;
   const SPEED = 0.1;
 
   class Star {

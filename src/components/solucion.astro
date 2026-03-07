@@ -83,11 +83,13 @@ const canales = [
 </section>
 
 <style>
-  .section-py { padding-top: 7rem; padding-bottom: 7rem; }
   .flujo-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     gap: 1rem;
+  }
+  @media (min-width: 480px) {
+    .flujo-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (min-width: 768px) {
     .flujo-grid { grid-template-columns: repeat(3, 1fr); }

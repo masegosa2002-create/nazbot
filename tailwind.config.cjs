@@ -12,6 +12,8 @@ module.exports = {
         secondary: "var(--color-secondary)",
         surface: "#111111",
         "surface-2": "#161616",
+        default: "var(--color-background)",
+        offset: "var(--color-background-offset)",
       },
       textColor: {
         default: "var(--color-text)",
