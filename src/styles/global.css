@@ -210,6 +210,11 @@ a,
   background-size: 56px 56px;
 }
 
+.section-py {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
 /* =============================================
    MOBILE SECTION PADDING
    ============================================= */
