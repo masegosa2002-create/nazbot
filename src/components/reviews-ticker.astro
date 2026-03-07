@@ -1,0 +1,113 @@
+---
+const reviews = [
+  {
+    name: "Clínica Beauty Madrid",
+    text: "Antes perdíamos horas contestando WhatsApps de madrugada. Ahora el bot agenda y nosotros solo atendemos.",
+    metrics: { customers: "+12%", revenue: "+2.100€", time: "18h/mes" }
+  },
+  {
+    name: "Dra. Elena Santos (Estética)",
+    text: "Tenía mis dudas sobre si sonaría a robot, pero la gente ni se da cuenta. Nos ha quitado muchísimo estrés.",
+    metrics: { customers: "+15%", revenue: "+3.500€", time: "22h/mes" }
+  },
+  {
+    name: "Ortodoncia Avanzada",
+    text: "Muchos pacientes preguntaban precios y nunca respondían más. Ahora el sistema les hace seguimiento y logramos que vengan.",
+    metrics: { customers: "+9%", revenue: "+4.200€", time: "15h/mes" }
+  },
+  {
+    name: "Centro Láser Valencia",
+    text: "Literalmente empezamos a ver más citas en el calendario de la noche a la mañana. Súper recomendable.",
+    metrics: { customers: "+18%", revenue: "+1.900€", time: "10h/mes" }
+  },
+  {
+    name: "Clínica Dental Sonrisas",
+    text: "Antes mi recepcionista no daba abasto con el teléfono y el mostrador a la vez. Esto le ha salvado la vida.",
+    metrics: { customers: "+10%", revenue: "+3.800€", time: "25h/mes" }
+  },
+  {
+    name: "Estética Integral BCN",
+    text: "Nos hemos olvidado de ir persiguiendo a la gente por WhatsApp para confirmar. Funciona automático.",
+    metrics: { customers: "+14%", revenue: "+2.600€", time: "14h/mes" }
+  }
+];
+
+// Duplicamos el array para el efecto de scroll infinito
+const reviewsList = [...reviews, ...reviews];
+---
+
+<section class="relative z-20 w-full py-16 overflow-hidden bg-[#0b0b0b] border-y border-white/10 shadow-2xl">
+  <!-- Gradient mask for smooth edges -->
+  <div class="absolute inset-y-0 left-0 w-8 sm:w-24 z-10 bg-gradient-to-r from-[#0b0b0b] to-transparent pointer-events-none"></div>
+  <div class="absolute inset-y-0 right-0 w-8 sm:w-24 z-10 bg-gradient-to-l from-[#0b0b0b] to-transparent pointer-events-none"></div>
+
+  <div class="flex marquee">
+    <div class="flex gap-6 marquee-content">
+      {reviewsList.map((review) => (
+        <div class="flex-shrink-0 w-[360px] p-7 rounded-xl bg-[#161616] border border-white/20 shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-1 mb-4">
+              {[...Array(5)].map(() => (
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#FFC107" class="drop-shadow-[0_0_4px_rgba(255,193,7,0.5)]">
+                  <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                </svg>
+              ))}
+            </div>
+            
+            <h4 class="text-base font-semibold text-white mb-2">{review.name}</h4>
+            <p class="text-[0.9rem] text-white/80 leading-relaxed mb-6 font-medium">"{review.text}"</p>
+          </div>
+          
+          <div class="grid grid-cols-3 gap-2 pt-4 border-t border-white/10 mt-auto">
+            <div class="text-center">
+              <span class="block text-sm font-bold text-blue-400">{review.metrics.customers}</span>
+              <span class="block text-[11px] uppercase tracking-wider text-white/50 mt-1">Citas</span>
+            </div>
+            <div class="text-center border-x border-white/10">
+              <span class="block text-sm font-bold text-[#28C840]">{review.metrics.revenue}</span>
+              <span class="block text-[11px] uppercase tracking-wider text-white/50 mt-1">Extra</span>
+            </div>
+            <div class="text-center">
+              <span class="block text-sm font-bold text-blue-400">{review.metrics.time}</span>
+              <span class="block text-[11px] uppercase tracking-wider text-white/50 mt-1">Ahorro</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee {
+    display: flex;
+    white-space: nowrap;
+    width: 100%;
+  }
+
+  .marquee-content {
+    display: flex;
+    animation: scroll 40s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee:hover .marquee-content {
+    animation-play-state: paused;
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 12px)); /* -50% porque duplicamos el contenido, -12px por la mitad del gap */
+    }
+  }
+
+  /* Ajuste para pantallas pequeñas */
+  @media (max-width: 640px) {
+    .marquee-content {
+      animation-duration: 25s;
+    }
+  }
+</style>
